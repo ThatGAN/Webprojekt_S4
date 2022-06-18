@@ -19,16 +19,18 @@ import Gewicht from "./Gewicht.js";
 // import * as serviceWorker from './serviceWorker';
 import reducers from "./reducers";
 import RezeptePage from "./RezeptePage.js";
+import { createRoot } from "react-dom/client";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
-const routs = () => (
+const Routs = () => (
   <Router>
     <Routes>
       <Route exact path="/" element={<App />}></Route>
       <Route exact path="/profil" element={<Profil />}></Route>
       <Route exact path="/fortschritt" element={<Fortschritt />}></Route>
       <Route exact path="/rezepte" element={<Rezepte />}></Route>
+      {/* <Route exact path="/*" element={<App />}></Route> */}
       <Route exact path="/rezeptePage" element={<RezeptePage />}></Route>
       <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
       <Route exact path="/addFruehstueck" element={<Fruestueck />}></Route>
@@ -41,14 +43,14 @@ const routs = () => (
   </Router>
 );
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
 root.render(
-  routs,
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,
   <Provider store={store}>
-    <App />
+    <Routs />
     {/* <RezeptePage /> */}
   </Provider>
+  // document.getElementById("root")
 );
