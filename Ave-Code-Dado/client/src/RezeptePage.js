@@ -8,12 +8,12 @@ import Form from "./components/Form/Form";
 import { getRecipes } from "./actions/recipes";
 
 const RezeptePage = () => {
-  const dispatch = useDispatch();
-  // class RezeptePage extends Component {
-  // render() {
-  useEffect(() => {
-    dispatch(getRecipes());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // // class RezeptePage extends Component {
+  // // render() {
+  // useEffect(() => {
+  //   dispatch(getRecipes());
+  // }, [dispatch]);
 
   return (
     <Container maxWidth="lg">

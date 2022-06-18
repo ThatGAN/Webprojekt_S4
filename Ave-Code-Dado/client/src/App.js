@@ -1,7 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getRecipes } from "./actions/recipes";
 import "./App.css";
 import Header from "./Header";
 class App extends Component {
+  // const App = () => {
+  // const dispatch = useDispatch();
+  // // class RezeptePage extends Component {
+  // // render() {
+  // useEffect(() => {
+  //   dispatch(getRecipes());
+  // }, [dispatch]);
+
   render() {
     return (
       <div class="App" id="app">
