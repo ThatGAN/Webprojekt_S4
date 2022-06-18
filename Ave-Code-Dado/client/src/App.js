@@ -8,27 +8,29 @@ class App extends Component {
         <Header />
 
         <div class="row green">
-          <div class="col s12 card-panel teal green z-depth-0">
-            <h2 class="center-align">Kalorien</h2>
-          </div>
-          <div class="col s12 card-panel teal green z-depth-0">
-            <table class="centered">
-              <thead>
-                <tr>
-                  <th>Gegessen</th>
-                  <th>Kalorien übrig</th>
-                  <th>Verbrannt</th>
-                </tr>
-              </thead>
+        <div class="col s12 card-panel teal green z-depth-0"></div> 
+<div class="col s12 card-panel teal green z-depth-0"></div>
+      <div class="col s12 card-panel teal green z-depth-0"><Circle score={50} color="#669999" orientation="up" width="15" diameter="200"/><h3 class="center-align">Kalorien</h3></div>  
+      <div class="col s12 card-panel teal green z-depth-0">
+      <div class="col s12 card-panel teal green z-depth-0"></div> 
+          <table class="centered">
+            <thead >
+          <tr>
+              <th>Gegessen</th>
+              <th>Kalorien übrig</th>
+              <th>Verbrannt</th>
+          </tr>
+        </thead>
 
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1234</td>
-                  <td>12</td>
-                </tr>
-              </tbody>
-            </table>
+            <tbody>
+          <tr>
+            <td>1</td>
+            <td>1234</td>
+            <td>12</td>
+          </tr>
+          
+            </tbody>
+        </table>
           </div>
         </div>
 
