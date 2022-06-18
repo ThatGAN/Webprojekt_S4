@@ -1,39 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App.js';
-import Profil from './Profil.jsx';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
-import Fortschritt from './Fortschritt.js';
-import Rezepte from './Rezepte.js';
-import Tagebuch from './Tagebuch.js';
-import Fruestueck from './Fruehstueck.js';
-import Mittagessen from './Mittag.js';
-import Abendessen from './Abendessen.js';
-import Snack from './Snack.js';
-import Aktivitaeten from './Aktivitaeten.js';
-import Gewicht from './Gewicht.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import "./index.css";
+import App from "./App.js";
+import Profil from "./Profil.jsx";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Fortschritt from "./Fortschritt.js";
+import Rezepte from "./RezeptePage.js";
+import Tagebuch from "./Tagebuch.js";
+import Fruestueck from "./Fruehstueck.js";
+import Mittagessen from "./Mittag.js";
+import Abendessen from "./Abendessen.js";
+import Snack from "./Snack.js";
+import Aktivitaeten from "./Aktivitaeten.js";
+import Gewicht from "./Gewicht.js";
 // import * as serviceWorker from './serviceWorker';
+import reducers from "./reducers";
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const routs = (
-<Router>
-
+  <Router>
     <Routes>
-        <Route exact path='/' element={< App />}></Route>
-        <Route exact path='/profil' element={< Profil />}></Route>
-        <Route exact path='/fortschritt' element={< Fortschritt />}></Route>
-        <Route exact path='/rezepte' element={< Rezepte />}></Route>
-        <Route exact path='/tagebuch' element={< Tagebuch />}></Route>
-        <Route exact path='/addFruehstueck' element={< Fruestueck />}></Route>
-        <Route exact path='/addMittagessen' element={< Mittagessen />}></Route>
-        <Route exact path='/addAbendessen' element={< Abendessen />}></Route>
-        <Route exact path='/addSnack' element={< Snack />}></Route>
-        <Route exact path='/addAktivitaeten' element={< Aktivitaeten />}></Route>
-        <Route exact path='/addGewicht' element={< Gewicht />}></Route>
-                      
+      <Route exact path="/" element={<App />}></Route>
+      <Route exact path="/profil" element={<Profil />}></Route>
+      <Route exact path="/fortschritt" element={<Fortschritt />}></Route>
+      <Route exact path="/rezepte" element={<Rezepte />}></Route>
+      <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
+      <Route exact path="/addFruehstueck" element={<Fruestueck />}></Route>
+      <Route exact path="/addMittagessen" element={<Mittagessen />}></Route>
+      <Route exact path="/addAbendessen" element={<Abendessen />}></Route>
+      <Route exact path="/addSnack" element={<Snack />}></Route>
+      <Route exact path="/addAktivitaeten" element={<Aktivitaeten />}></Route>
+      <Route exact path="/addGewicht" element={<Gewicht />}></Route>
     </Routes>
-               
-            </Router>
+  </Router>
 );
 
-ReactDOM.render(routs, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  routs,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

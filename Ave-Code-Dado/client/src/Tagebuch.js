@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import Header from './Header';
+import React, { Component } from "react";
+import Header from "./Header";
 
 class Tagebuch extends Component {
-    render() {
-    return (<div>
+  render() {
+    return (
+      <div>
         <Header />
-    </div>
-
-    )
-    }
+      </div>
+    );
+  }
 }
 
 export default Tagebuch;
