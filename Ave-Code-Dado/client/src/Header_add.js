@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-function Header_add(props) {
+function HeaderAdd(props) {
   return (
     <nav>
       <div class="nav-wrapper z-depth-1">
@@ -15,4 +15,4 @@ function Header_add(props) {
   );
 }
 
-export default Header_add;
+export default HeaderAdd;

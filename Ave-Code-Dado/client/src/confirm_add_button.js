@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Confirm_add_button extends Component {
+class ConfirmAddButton extends Component {
   render() {
     return (
       <div class="row brown lighten-2">
@@ -15,4 +15,4 @@ class Confirm_add_button extends Component {
   }
 }
 
-export default Confirm_add_button;
+export default ConfirmAddButton;

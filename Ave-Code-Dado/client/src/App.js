@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./Header";
+import Circle from './Progressbar-semicircle.js';
 class App extends Component {
   render() {
     return (
@@ -16,7 +17,7 @@ class App extends Component {
           <table class="centered">
             <thead >
           <tr>
-              <th>Gegessen</th>
+              <th>Gegessen </th>
               <th>Kalorien übrig</th>
               <th>Verbrannt</th>
           </tr>

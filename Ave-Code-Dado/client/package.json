@@ -8,11 +8,14 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
+    "chart.js": "^3.8.0",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.29.3",
     "react": "^18.0.0",
+    "react-chartjs-2": "^4.2.0",
     "react-dom": "^18.0.0",
     "react-file-base64": "^1.0.3",
+    "react-progressbar-semicircle": "^1.2.1",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
@@ -23,10 +26,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts build --openssl-legacy-provider",
+    "start": "react-scripts start --openssl-legacy-provider",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scriptsnp eject"
   },
   "eslintConfig": {
     "extends": [
