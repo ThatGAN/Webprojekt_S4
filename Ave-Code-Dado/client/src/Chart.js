@@ -4,6 +4,8 @@ import Chart from 'chart.js/auto';
 export default class LineChart extends Component {
 
 	chartRef = React.createRef();
+	
+
 
 	componentDidMount() {
 		const ctx = this.chartRef.current.getContext("2d");
@@ -13,7 +15,7 @@ export default class LineChart extends Component {
 		new Chart(ctx, {
 			type: "line",
 			data: {
-				labels: ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5", "Tag6", "Tag7"],
+				labels: ["Woche1", "Woche2", "Woche3", "Woche4", "Woche5", "Woche6", "Woche7"],
                 
 				datasets: [{ 
 					data: [90,80,70,60,66,67,70],
@@ -25,6 +27,8 @@ export default class LineChart extends Component {
 				}
 				]
 			},
+
+			
 		});
 	}
 	render() {
