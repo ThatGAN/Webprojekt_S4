@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./Header";
+import HeaderMobile from "./HeaderMobile";
 import Circle from './Progressbar-semicircle.js';
-class App extends Component {
-  render() {
+import {BrowserView, MobileView} from 'react-device-detect';
+function App()  {
+   
     return (
       <div class="App" id="app">
-        <Header />
+        
+        <BrowserView>
+          <Header />
+        </BrowserView>
+        <MobileView>
+          <HeaderMobile />
+        </MobileView>
+
 
         <div class="row green">
         <div class="col s12 card-panel teal green z-depth-0"></div> 
@@ -37,38 +46,38 @@ class App extends Component {
 
         <div class="row brown lighten-2">
           <div class="col s12 card-panel brown lighten-2 z-depth-0">
-            <h4 class="center-align"> Heute </h4>
+            <h5 class="center-align"> Heute </h5>
           </div>
           <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
           <div class="col s4 white">
             {" "}
-            <h5 class="center-align">Frühstück</h5>
-            <h6 class="center-align">123 Kalorien</h6>{" "}
+            <h6 class="center-align">Frühstück</h6>
+            <p class="center-align">123 Kalorien</p>{" "}
           </div>
           <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
           <div class="col s4 white">
             {" "}
-            <h5 class="center-align">Mittagessen</h5>
-            <h6 class="center-align">123 Kalorien</h6>
+            <h6 class="center-align">Mittagessen</h6>
+            <p class="center-align">123 Kalorien</p>
           </div>
           <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
           <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
           <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
           <div class="col s4 white">
             {" "}
-            <h5 class="center-align">Abendessen</h5>{" "}
-            <h6 class="center-align">123 Kalorien</h6>
+            <h6 class="center-align">Abendessen</h6>{" "}
+            <p class="center-align">123 Kalorien</p>
           </div>
           <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
           <div class="col s4 white">
             {" "}
-            <h5 class="center-align">Snacks</h5>{" "}
-            <h6 class="center-align">123 Kalorien</h6>
+            <h6 class="center-align">Snacks</h6>{" "}
+            <p class="center-align">123 Kalorien</p>
           </div>
         </div>
 
         <div class="fixed-action-btn horizontal">
-          <a href="" class="btn-floating red btn-large">
+          <a class="btn-floating red btn-large">
             <i class="material-icons large">add</i>
           </a>
 
@@ -110,6 +119,6 @@ class App extends Component {
       </div>
     );
   }
-}
+
 
 export default App;

@@ -1,12 +1,19 @@
 import React from "react";
 import Header from "./Header";
 import LineChart from "./Chart";
+import {BrowserView, MobileView} from 'react-device-detect';
+import HeaderMobile from "./HeaderMobile";
 
 
 function Fortschritt() {
   return (
     <div>
-      <Header />
+              <BrowserView>
+          <Header />
+        </BrowserView>
+        <MobileView>
+          <HeaderMobile />
+        </MobileView>
       <div class="row">
       <div class="col s12 card-panel brown lighten-4 z-depth-0">
         <LineChart />
