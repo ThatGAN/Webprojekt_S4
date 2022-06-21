@@ -10,14 +10,14 @@ require("dotenv").config();
 
 const app = express();
 
-//routes
-app.use("/recipes", recipesRoutes);
-connection();
-
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.json());
 app.use(cors());
+
+//routes
+app.use("/recipes", recipesRoutes);
+connection();
 
 // const CONNECTION_URL =
 //   "mongodb+srv://ThatGAN:ThatGAN123@cluster0.kejqs.mongodb.net/?retryWrites=true&w=majority";

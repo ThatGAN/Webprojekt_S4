@@ -31,7 +31,7 @@ const Routs = () => (
       <Route exact path="/fortschritt" element={<Fortschritt />}></Route>
       <Route exact path="/rezepte" element={<Rezepte />}></Route>
       {/* <Route exact path="/*" element={<App />}></Route> */}
-      <Route exact path="/rezeptePage" element={<RezeptePage />}></Route>
+      {/* <Route exact path="/rezepte" element={<RezeptePage />}></Route> */}
       <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
       <Route exact path="/addFruehstueck" element={<Fruestueck />}></Route>
       <Route exact path="/addMittagessen" element={<Mittagessen />}></Route>
@@ -45,12 +45,7 @@ const Routs = () => (
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
   <Provider store={store}>
     <Routs />
-    {/* <RezeptePage /> */}
   </Provider>
-  // document.getElementById("root")
 );

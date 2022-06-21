@@ -4,11 +4,11 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div class="nav-wrapper z-depth-1">
-          <a href="/" class="brand-logo center">
+        <div className="nav-wrapper z-depth-1">
+          <a href="/" className="brand-logo center">
             Av-Code-Dado
           </a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li>
               <a href="/profil">Profil</a>
             </li>

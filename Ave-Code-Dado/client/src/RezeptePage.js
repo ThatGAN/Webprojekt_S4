@@ -14,29 +14,32 @@ const RezeptePage = () => {
   }, [dispatch]);
 
   return (
-    <Container maxWidth="lg">
+    <>
       <div>
         <Header />
       </div>
-      TEST123
-      {/* <Grow in>
-        <Container>
-          <Grid
-            container
-            justify="space-between"
-            alignItems="stretch"
-            spacing={3}
-          >
-            <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId} />
+      <Container maxWidth="lg">
+        <Grow in>
+          <Container>
+            <Grid
+              container
+              justify="space-between"
+              alignItems="stretch"
+              spacing={3}
+            >
+              <Grid item xs={12} sm={7}>
+                <Rezepte />
+                {/* setCurrentId={setCurrentId} */}
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Form />
+                {/* currentId={currentId} setCurrentId={setCurrentId} */}
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow> */}
-    </Container>
+          </Container>
+        </Grow>
+      </Container>
+    </>
   );
 };
 // }

@@ -10,18 +10,36 @@ const getRecipes = async (req, res) => {
   }
 };
 
-const createRecipes = async (req, res) => {
-  const body = req.body;
-
-  const newRecipe = new PostMessage(post);
+const getRecipe = async (req, res) => {
+  const { id } = req.params;
 
   try {
-    await newPost.save();
+    const recipe = await recipePost.findById(id);
 
-    res.status(201).json(newPost);
+    res.status(200).json(recipe);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const createRecipe = async (req, res) => {
+  const { name, description, tags, kcal, selctedFile } = req.body;
+
+  const newRecipePost = new recipePost({
+    name,
+    description,
+    tags,
+    kcal,
+    selctedFile,
+  });
+
+  try {
+    await newRecipePost.save();
+
+    res.status(201).json(newRecipePost);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
 };
 
-module.exports = { getRecipes, createRecipes };
+module.exports = { getRecipes, getRecipe, createRecipe };

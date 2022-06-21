@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
   name: String,
   description: String,
-  selectedFile: String,
-  tag: [String],
+  tags: [String],
   kcal: Number,
+  selectedFile: String,
 
   rating: {
     type: Number,
