@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Header extends Component {
-  render() {
-    return (
-      <nav>
+
+function Header() {
+
+
+  return (
+    <nav>
         <div class="nav-wrapper z-depth-1">
           <a href="/" class="brand-logo center">
             Av-Code-Dado
@@ -27,8 +29,9 @@ class Header extends Component {
           </ul>
         </div>
       </nav>
-    );
-  }
+    
+  );
 }
+
 
 export default Header;

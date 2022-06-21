@@ -18,6 +18,7 @@ import Aktivitaeten from "./Aktivitaeten.js";
 import Gewicht from "./Gewicht.js";
 // import * as serviceWorker from './serviceWorker';
 import reducers from "./reducers";
+import "./css/responsive.css";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
