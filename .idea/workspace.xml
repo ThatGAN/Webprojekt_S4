@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d355a5ad-4d2d-4bb3-94fc-aa9872c9ad7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Ave-Code-Dado/client/src/AppMealsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ave-Code-Dado/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ave-Code-Dado/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ave-Code-Dado/client/src/Fruehstueck.js" beforeDir="false" afterPath="$PROJECT_DIR$/Ave-Code-Dado/client/src/Fruehstueck.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +60,8 @@
       <workItem from="1656072672915" duration="959000" />
       <workItem from="1656073637613" duration="23000" />
       <workItem from="1656073665194" duration="2977000" />
+      <workItem from="1656077859888" duration="23000" />
+      <workItem from="1656077886085" duration="75000" />
     </task>
     <servers />
   </component>

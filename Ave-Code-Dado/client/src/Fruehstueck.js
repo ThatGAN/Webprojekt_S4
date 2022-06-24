@@ -7,6 +7,7 @@ import AppControlsInputs from "./components/AppControls/AppControlsInputs";
 import AppControlsDelete from "./components/AppControls/AppControlsDelete";
 import AppMealsList from "./AppMealsList";
 
+{/*test*/}
 function Fruestueck () {
   const [meals,setMeals] = useState([]);
   const [mealName, setMealName] = useState("");
