@@ -5,6 +5,7 @@ import ConfirmAddButton from "./confirm_add_button.js";
 import {BrowserView, MobileView} from 'react-device-detect';
 import AppControlsInputs from "./components/AppControls/AppControlsInputs";
 import AppControlsDelete from "./components/AppControls/AppControlsDelete";
+import AppMealsList from "./AppMealsList";
 
 function Fruestueck () {
   const [meals,setMeals] = useState([]);
@@ -12,15 +13,21 @@ function Fruestueck () {
   const [calories, setCalories] = useState(0); 
   const [openModal, setOpenModal] = useState(false);
 
-  const addMealsHandler= () => {
-    const oldMeal = [...meals];
-    const meal = {
+  const deleteMealHandler = (id) => (
+    const oldMeals = [...meals];
+    const newMeals = oldMeals.filter({meal}=>meal.id !== id);
+
+    setMeals(newMeals);
+    )
+      const meal = {
       mealName,
       calories,
       id: Math.floor(Math.random() * 1000),
     };
 
-    const newMeals =oldmeals.concat(meal);
+    const newMeals = oldMeals.filter({meal}=>meal.id !== id);
+
+
 
     if(calories <= 0 || mealName ===""){
       alert("Feld darf nicht leer sein")
@@ -30,8 +37,21 @@ function Fruestueck () {
 
     setMealName("");
     setCalories(0);
+};
+const deleteMealHandler = (id) => (
+  const oldMeals = [...meals];
+  const newMeals = oldMeals.filter({meal}=>meal.id !== id);
 
-  }
+  setMeals(newMeals);
+  )
+
+render(
+
+) {
+
+
+
+
     return (
       <div>
         <BrowserView>
@@ -45,6 +65,11 @@ function Fruestueck () {
         <AppControlsInputs addMealsHandler={addMealsHandler} mealName={mealName} calories={calories} setMealName={setMealName} setCalories={setCalories}/>
         <AppControlsDelete />
         <ConfirmAddButton />
+
+
+          <div className="app_meals_container">
+              <AppMealsList meals={meals} deleteMealHandler=(deleteMealHandler) =/>
+          </div>
       </div>
     );
   }

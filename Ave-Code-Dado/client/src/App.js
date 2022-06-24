@@ -7,6 +7,7 @@ import AppControlsCounter from "./components/AppControls/AppControlsCounter";
 import {BrowserView, MobileView} from 'react-device-detect';
 
 function App()  {
+
   const [meals,setMeals] = useState([]);
   const [mealName, setMealName] = useState("");
   const [calories, setcalories] = useState(0); 
@@ -16,7 +17,9 @@ function App()  {
     console.log("meal added");
   }
 
- 
+
+
+
    
     return (
       <div class="App" id="app">
@@ -130,6 +133,8 @@ function App()  {
             </li>
           </ul>
         </div>
+
+
         
       </div>
     );
