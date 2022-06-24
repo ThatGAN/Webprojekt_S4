@@ -14,19 +14,16 @@ function Fruestueck () {
   const [calories, setCalories] = useState(0); 
   const [openModal, setOpenModal] = useState(false);
 
-  const deleteMealHandler = (id) => (
+  const deleteMealHandler = (id) => {
     const oldMeals = [...meals];
-    const newMeals = oldMeals.filter({meal}=>meal.id !== id);
+    const newMeals = oldMeals.filter((meal) => meal.id !== id);
 
-    setMeals(newMeals);
-    )
-      const meal = {
-      mealName,
-      calories,
-      id: Math.floor(Math.random() * 1000),
-    };
+    setMeals([]);
+    localStorage.clear();
+  }; 
 
-    const newMeals = oldMeals.filter({meal}=>meal.id !== id);
+
+    const newMeals = oldMeals.concat(meal);
 
 
 
@@ -39,12 +36,32 @@ function Fruestueck () {
     setMealName("");
     setCalories(0);
 };
-const deleteMealHandler = (id) => (
+const addMealsHandler = (id) => {
   const oldMeals = [...meals];
-  const newMeals = oldMeals.filter({meal}=>meal.id !== id);
+  const meal = {
+    mealName,
+    calories,
+    id: Math.floor(Math.random() * 1000),
 
-  setMeals(newMeals);
-  )
+}
+
+const deleteAllMeals =() => {
+  setMeals([]);
+};
+
+const total = meals
+.map((meal) => meal.calories)
+.reduce((acc, value) => acc + +value, 0);
+useEffect(()=>{
+  const oldState =[...meals];
+  if(selectedFilter==="Ascending") {
+    const ascendingMeals = oldstate.sort((a,b) => a.calories - b.calories);
+   } else if (selectedFilter === "Descending") {
+      const descendingMeals = oldState.sort((a,b) => b.calories - a.calories);
+      setMeals(descendingMeals);
+    }
+  }, [selectedFilter]);
+
 
 
 
@@ -66,7 +83,7 @@ const deleteMealHandler = (id) => (
 
 
           <div className="app_meals_container">
-              <AppMealsList meals={meals} deleteMealHandler=(deleteMealHandler) =/>
+              <AppMealsList meals={meals} deleteMealHandler={deleteMealHandler} />
           </div>
       </div>
     );
