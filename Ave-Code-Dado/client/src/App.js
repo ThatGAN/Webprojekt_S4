@@ -7,9 +7,8 @@ import AppControlsCounter from "./components/AppControls/AppControlsCounter";
 import {BrowserView, MobileView} from 'react-device-detect';
 
 function App()  {
-  
 
- 
+
    
     return (
       <div class="App" id="app">
@@ -123,6 +122,8 @@ function App()  {
             </li>
           </ul>
         </div>
+
+
         
       </div>
     );
