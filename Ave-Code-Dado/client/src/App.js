@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {useState,useEffect } from "react";
 import "./App.css";
 import Header from "./Header";
 import HeaderMobile from "./HeaderMobile";
@@ -7,7 +7,14 @@ import AppControlsCounter from "./components/AppControls/AppControlsCounter";
 import {BrowserView, MobileView} from 'react-device-detect';
 
 function App()  {
-  
+  const [meals,setMeals] = useState([]);
+  const [mealName, setMealName] = useState("");
+  const [calories, setcalories] = useState(0); 
+  const [openModal, setOpenModal] = useState(false);
+
+  const addMealsHandler= () => {
+    console.log("meal added");
+  }
 
  
    
@@ -26,7 +33,7 @@ function App()  {
         <div class="col s12 card-panel teal green z-depth-0"></div> 
 <div class="col s12 card-panel teal green z-depth-0"></div>
       <div class="col s12 card-panel teal green z-depth-0"><Circle score={50} color="#669999" orientation="up" width="15" diameter="300" class="circle"/></div>  
-      <div class="col s12 card-panel teal green z-depth-0 kalorien"> <AppControlsCounter /></div>
+      <div class="col s12 card-panel teal green z-depth-0 kalorien"> <AppControlsCounter /> </div>
       
       <div class="col s12 card-panel teal green z-depth-0">
       <div class="col s12 card-panel teal green z-depth-0"></div> 
