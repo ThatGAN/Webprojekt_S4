@@ -3,6 +3,7 @@ import Header from "./Header";
 import LineChart from "./Chart";
 import {BrowserView, MobileView} from 'react-device-detect';
 import HeaderMobile from "./HeaderMobile";
+import './css/Fortschritt.css'
 
 
 function Fortschritt() {
@@ -22,7 +23,7 @@ function Fortschritt() {
 
 </div>
 
-<div class="center col s6 card-panel teal green z-depth-0">
+<div class="center col s6 card-panel teal green z-depth-0 box">
           <h5>Gewicht: xyz</h5>
           <p>Startgewicht: xyz</p>
           <p>Zielgewicht: xyz</p>
@@ -38,7 +39,7 @@ function Fortschritt() {
         
       </div>
 
-      <div  class="center col s6 card-panel teal green z-depth-0">
+      <div  class="center col s6 card-panel teal green z-depth-0 box">
           <h5>Wasser getrunken: xyz</h5>
           <p>Zielmenge: xyz</p>
           <p>Erfolgsquote: +- xyz</p>

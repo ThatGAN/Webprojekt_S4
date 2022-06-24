@@ -4,7 +4,11 @@ import Header from "./Header";
 import HeaderMobile from "./HeaderMobile";
 import Circle from './Progressbar-semicircle.js';
 import {BrowserView, MobileView} from 'react-device-detect';
+
 function App()  {
+  
+
+ 
    
     return (
       <div class="App" id="app">
@@ -20,7 +24,9 @@ function App()  {
         <div class="row green">
         <div class="col s12 card-panel teal green z-depth-0"></div> 
 <div class="col s12 card-panel teal green z-depth-0"></div>
-      <div class="col s12 card-panel teal green z-depth-0"><Circle score={50} color="#669999" orientation="up" width="15" diameter="200"/><h3 class="center-align">Kalorien</h3></div>  
+      <div class="col s12 card-panel teal green z-depth-0"><Circle score={50} color="#669999" orientation="up" width="15" diameter="300" class="circle"/></div>  
+      <div class="col s12 card-panel teal green z-depth-0 kalorien"> <h3 class="center-align ">Kalorien</h3></div>
+      
       <div class="col s12 card-panel teal green z-depth-0">
       <div class="col s12 card-panel teal green z-depth-0"></div> 
           <table class="centered">
@@ -46,16 +52,16 @@ function App()  {
 
         <div class="row brown lighten-2">
           <div class="col s12 card-panel brown lighten-2 z-depth-0">
-            <h5 class="center-align"> Heute </h5>
+            <h5 class="center-align heute"> Heute </h5>
           </div>
           <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
-          <div class="col s4 white">
+          <div  class="col s4 white  whiteBox" >
             {" "}
             <h6 class="center-align">Frühstück</h6>
             <p class="center-align">123 Kalorien</p>{" "}
           </div>
           <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
-          <div class="col s4 white">
+          <div class="col s4 white whiteBox">
             {" "}
             <h6 class="center-align">Mittagessen</h6>
             <p class="center-align">123 Kalorien</p>
@@ -63,13 +69,13 @@ function App()  {
           <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
           <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
           <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
-          <div class="col s4 white">
+          <div class="col s4 white whiteBox">
             {" "}
             <h6 class="center-align">Abendessen</h6>{" "}
             <p class="center-align">123 Kalorien</p>
           </div>
           <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
-          <div class="col s4 white">
+          <div class="col s4 white whiteBox">
             {" "}
             <h6 class="center-align">Snacks</h6>{" "}
             <p class="center-align">123 Kalorien</p>
@@ -116,6 +122,7 @@ function App()  {
             </li>
           </ul>
         </div>
+        
       </div>
     );
   }
