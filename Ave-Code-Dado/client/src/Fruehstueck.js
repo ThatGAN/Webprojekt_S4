@@ -45,9 +45,6 @@ const deleteMealHandler = (id) => (
   setMeals(newMeals);
   )
 
-render(
-
-) {
 
 
 
