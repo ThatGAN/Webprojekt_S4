@@ -9,7 +9,7 @@ const recipeSchema = new Schema({
   kcal: Number,
   selectedFile: String,
 
-  rating: {
+  likeCount: {
     type: Number,
     default: 0,
   },
@@ -19,7 +19,4 @@ const recipeSchema = new Schema({
   },
 });
 
-// const recipePost = mongoose.model("recipePost", recipeSchema);
-
-// export default recipePost;
 module.exports = mongoose.model("recipePost", recipeSchema);

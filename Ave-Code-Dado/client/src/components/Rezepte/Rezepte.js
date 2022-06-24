@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Grid, CircularProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
-import Header from "../../Header";
 import Rezept from "./Rezept/Rezept";
 import useSytles from "./styles.js";
 

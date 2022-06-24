@@ -28,10 +28,9 @@ const Rezept = ({ recipe, setCurrentId }) => {
           recipe.selectedFile ||
           "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
         }
-        title={recipe.title}
+        name={recipe.name}
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">{recipe.creator}</Typography>
         <Typography variant="body2">
           {moment(recipe.createdAt).fromNow()}
         </Typography>
@@ -42,7 +41,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
           size="small"
           onClick={() => setCurrentId(recipe._id)}
         >
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
       <div className={classes.details}>
@@ -56,11 +55,11 @@ const Rezept = ({ recipe, setCurrentId }) => {
         variant="h5"
         component="h2"
       >
-        {recipe.title}
+        {recipe.name}
       </Typography>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {recipe.message}
+          {recipe.description}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>

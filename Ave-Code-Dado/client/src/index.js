@@ -6,7 +6,13 @@ import thunk from "redux-thunk";
 import "./index.css";
 import App from "./App.js";
 import Profil from "./Profil.jsx";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
 import Fortschritt from "./Fortschritt.js";
 import Rezepte from "./RezeptePage.js";
 import Tagebuch from "./Tagebuch.js";
@@ -18,11 +24,13 @@ import Aktivitaeten from "./Aktivitaeten.js";
 import Gewicht from "./Gewicht.js";
 // import * as serviceWorker from './serviceWorker';
 import reducers from "./reducers";
-import RezeptePage from "./RezeptePage.js";
 import { createRoot } from "react-dom/client";
+import Main from "./components/Main";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
-
+const user = localStorage.getItem("token");
 const Routs = () => (
   <Router>
     <Routes>
@@ -39,6 +47,10 @@ const Routs = () => (
       <Route exact path="/addSnack" element={<Snack />}></Route>
       <Route exact path="/addAktivitaeten" element={<Aktivitaeten />}></Route>
       <Route exact path="/addGewicht" element={<Gewicht />}></Route>
+      {user && <Route path="/" exact element={<Main />} />}
+      <Route path="/signup" exact element={<Signup />} />
+      <Route path="/login" exact element={<Login />} />
+      <Route path="/" element={<Navigate replace to="/login" />} />
     </Routes>
   </Router>
 );

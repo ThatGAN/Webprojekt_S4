@@ -3,6 +3,7 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 
+import styles1 from "./Form.css";
 import useStyles from "./styles";
 import { createRecipe, updateRecipe } from "../../actions/recipes";
 
@@ -22,32 +23,33 @@ const Form = ({ currentId, setCurrentId }) => {
   );
   const dispatch = useDispatch();
   const classes = useStyles();
+  const classes1 = styles1;
 
   useEffect(() => {
     if (recipe) setRecipeData(recipe);
   }, [recipe]);
 
-  // const clear = () => {
-  //   setCurrentId(0);
-  //   setRecipeData({
-  //     name: "",
-  //     description: "",
-  //     tags: "",
-  //     kcal: "",
-  //     selectedFile: "",
-  //   });
-  // };
+  const clear = () => {
+    setCurrentId(0);
+    setRecipeData({
+      name: "",
+      description: "",
+      tags: "",
+      kcal: "",
+      selectedFile: "",
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createRecipe(recipeData));
-    // if (currentId === 0) {
-    //   clear();
-    // } else {
-    //   dispatch(updateRecipe(currentId, recipeData));
-    //   clear();
-    //   console.log("Hier");
-    // }
+
+    if (currentId === 0) {
+      dispatch(createRecipe(recipeData));
+      clear();
+    } else {
+      dispatch(updateRecipe(currentId, recipeData));
+      clear();
+    }
   };
 
   return (
@@ -59,9 +61,10 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${recipe.title}"` : "Erstelle ein Rezept"}
+          {currentId ? `Bearbeite" ${recipe.name}"` : "Erstelle ein Rezept"}
         </Typography>
         <TextField
+          className={classes1.underline}
           name="name"
           variant="outlined"
           label="Name"
@@ -84,6 +87,7 @@ const Form = ({ currentId, setCurrentId }) => {
           }
         />
         <TextField
+          className="underline"
           name="tags"
           variant="outlined"
           label="Zutaten (Komma unterteilt)"
@@ -94,6 +98,7 @@ const Form = ({ currentId, setCurrentId }) => {
           }
         />
         <TextField
+          className="underline"
           name="kcal"
           variant="outlined"
           label="kcal"
@@ -122,7 +127,7 @@ const Form = ({ currentId, setCurrentId }) => {
         >
           Submit
         </Button>
-        {/* <Button
+        <Button
           variant="contained"
           color="secondary"
           size="small"
@@ -130,7 +135,7 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
         >
           Clear
-        </Button> */}
+        </Button>
       </form>
     </Paper>
   );
