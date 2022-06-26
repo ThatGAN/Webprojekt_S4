@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const AppMealsList = ({ meals, deleteMealHandler }) => {
   return (
     <div className="app__meals__container__wrapper">
