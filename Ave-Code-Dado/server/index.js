@@ -3,8 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const connection = require("./db");
-const userRoutes = require("./routes/user");
-const authRoutes = require("./routes/auth");
+const userRouter = require("./routes/user.js");
 const recipesRoutes = require("./routes/recipes.js");
 require("dotenv").config();
 
@@ -19,8 +18,7 @@ connection();
 
 //routes
 app.use("/recipes", recipesRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/auth", authRoutes);
+app.use("/user", userRouter);
 
 const port = process.env.PORT || 5000;
 

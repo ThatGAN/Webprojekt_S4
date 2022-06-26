@@ -11,11 +11,12 @@ const {
 } = require("../controller/recipe.js");
 
 const router = express.Router();
+const { auth } = require("../middleware/auth.js");
 
 router.get("/", getRecipes);
-router.post("/", createRecipe);
-router.get("/:id", getRecipe);
-router.patch("/:id", updateRecipe);
-router.delete("/:id", deleteRecipe);
-router.patch("/:id/likeRecipe", likeRecipe);
+router.post("/", auth, createRecipe);
+router.get("/:id", auth, getRecipe);
+router.patch("/:id", auth, updateRecipe);
+router.delete("/:id", auth, deleteRecipe);
+router.patch("/:id/likeRecipe", auth, likeRecipe);
 module.exports = router;

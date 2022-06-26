@@ -11,6 +11,7 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
+import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import { useDispatch } from "react-redux";
 
 import { likeRecipe, deleteRecipe } from "../../../actions/recipes";
@@ -19,6 +20,38 @@ import useStyles from "./styles";
 const Rezept = ({ recipe, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const Likes = () => {
+    if (recipe.likes.length > 0) {
+      return recipe.likes.find(
+        (like) => like === (user?.result?.googleId || user?.result?._id)
+      ) ? (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;
+          {recipe.likes.length > 2
+            ? `You and ${recipe.likes.length - 1} others`
+            : `${recipe.likes.length} like${
+                recipe.likes.length > 1 ? "s" : ""
+              }`}
+        </>
+      ) : (
+        <>
+          <ThumbUpAltOutlined fontSize="small" />
+          &nbsp;{recipe.likes.length}{" "}
+          {recipe.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
 
   return (
     <Card className={classes.card}>
@@ -35,15 +68,19 @@ const Rezept = ({ recipe, setCurrentId }) => {
           {moment(recipe.createdAt).fromNow()}
         </Typography>
       </div>
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(recipe._id)}
-        >
-          <MoreHorizIcon fontSize="medium" />
-        </Button>
-      </div>
+
+      {(user?.result?.googleId === recipe?.creator ||
+        user?.result?._id === recipe?.creator) && (
+        <div className={classes.overlay2}>
+          <Button
+            onClick={() => setCurrentId(recipe._id)}
+            style={{ color: "white" }}
+            size="small"
+          >
+            <MoreHorizIcon fontSize="default" />
+          </Button>
+        </div>
+      )}
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary" component="h2">
           {recipe.tags.map((tag) => `#${tag} `)}
@@ -66,17 +103,21 @@ const Rezept = ({ recipe, setCurrentId }) => {
         <Button
           size="small"
           color="primary"
+          disabled={!user?.result}
           onClick={() => dispatch(likeRecipe(recipe._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> Like {recipe.likeCount}{" "}
+          <Likes />
         </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => dispatch(deleteRecipe(recipe._id))}
-        >
-          <DeleteIcon fontSize="small" /> Delete
-        </Button>
+        {(user?.result?.googleId === recipe?.creator ||
+          user?.result?._id === recipe?.creator) && (
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => dispatch(deleteRecipe(recipe._id))}
+          >
+            <DeleteIcon fontSize="small" /> Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

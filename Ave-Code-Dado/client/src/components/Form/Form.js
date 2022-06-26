@@ -23,7 +23,7 @@ const Form = ({ currentId, setCurrentId }) => {
   );
   const dispatch = useDispatch();
   const classes = useStyles();
-  const classes1 = styles1;
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     if (recipe) setRecipeData(recipe);
@@ -44,13 +44,25 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createRecipe(recipeData));
+      dispatch(createRecipe({ ...recipeData, name: user?.result?.name }));
       clear();
     } else {
-      dispatch(updateRecipe(currentId, recipeData));
+      dispatch(
+        updateRecipe(currentId, { ...recipeData, name: user?.result?.name })
+      );
       clear();
     }
   };
+
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <Paper className={classes.paper}>
@@ -64,7 +76,6 @@ const Form = ({ currentId, setCurrentId }) => {
           {currentId ? `Bearbeite" ${recipe.name}"` : "Erstelle ein Rezept"}
         </Typography>
         <TextField
-          className={classes1.underline}
           name="name"
           variant="outlined"
           label="Name"
@@ -73,6 +84,7 @@ const Form = ({ currentId, setCurrentId }) => {
           onChange={(e) =>
             setRecipeData({ ...recipeData, name: e.target.value })
           }
+          style={{ borderBottom: "0px" }}
         />
         <TextField
           name="description"
