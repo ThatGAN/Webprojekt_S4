@@ -3,7 +3,11 @@ import "./App.css";
 import Header from "./Header";
 import HeaderMobile from "./HeaderMobile";
 import Circle from './Progressbar-semicircle.js';
+import AppControlsInputs from "./components/AppControls/AppControlsInputs";
+import AppControlsDelete from "./components/AppControls/AppControlsDelete";
 import AppControlsCounter from "./components/AppControls/AppControlsCounter";
+import AppMealsList from "./components/AppMealsList/AppMealsList.js";
+import AppMealsFilter from "./components/AppMealsFilter/AppMealsFilter.js";
 import {BrowserView, MobileView} from 'react-device-detect';
 
 function App()  {
@@ -13,9 +17,7 @@ function App()  {
   const [calories, setcalories] = useState(0); 
   const [openModal, setOpenModal] = useState(false);
 
-  const addMealsHandler= () => {
-    console.log("meal added");
-  }
+  const total = meals.map((meal) => meal.calories).reduce((acc, value) => acc + +value, 0);
 
 
 
@@ -36,7 +38,7 @@ function App()  {
         <div class="col s12 card-panel teal green z-depth-0"></div> 
 <div class="col s12 card-panel teal green z-depth-0"></div>
       <div class="col s12 card-panel teal green z-depth-0"><Circle score={50} color="#669999" orientation="up" width="15" diameter="300" class="circle"/></div>  
-      <div class="col s12 card-panel teal green z-depth-0 kalorien"> <AppControlsCounter /> </div>
+      <div class="col s12 card-panel teal green z-depth-0 kalorien"> <AppControlsCounter total={total}/> </div>
       
       <div class="col s12 card-panel teal green z-depth-0">
       <div class="col s12 card-panel teal green z-depth-0"></div> 
