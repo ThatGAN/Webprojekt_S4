@@ -5,21 +5,15 @@ const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
   name: String,
   description: String,
-  selectedFile: String,
-  tag: [String],
+  tags: [String],
   kcal: Number,
+  selectedFile: String,
 
-  rating: {
-    type: Number,
-    default: 0,
-  },
+  likes: { type: [String], default: [] },
   createdAt: {
     type: Date,
     default: new Date(),
   },
 });
 
-// const recipePost = mongoose.model("recipePost", recipeSchema);
-
-// export default recipePost;
 module.exports = mongoose.model("recipePost", recipeSchema);

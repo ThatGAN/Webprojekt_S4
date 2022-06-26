@@ -2,14 +2,19 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-eslint": "^10.1.0",
     "chart.js": "^3.8.0",
+    "es-to-primitive": "^1.2.1",
+    "is-callable": "^1.2.4",
+    "jwt-decode": "^3.1.2",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.29.3",
     "react": "^18.0.0",
@@ -17,12 +22,12 @@
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.0.0",
     "react-file-base64": "^1.0.3",
+    "react-google-login": "^5.2.2",
     "react-progressbar-semicircle": "^1.2.1",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "react-script": "^2.0.5",
-    "react-scripts": "^2.1.3",
+    "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "responsive-navbar-react": "^1.2.1",
@@ -33,12 +38,6 @@
     "start": "react-scripts start --openssl-legacy-provider",
     "test": "react-scripts test",
     "eject": "react-scriptsnp eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -57,7 +56,3 @@
     "babel-loader": "^6.0.1"
   }
 }
-
-
-
-

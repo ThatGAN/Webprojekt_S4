@@ -18,9 +18,9 @@ export const getRecipes = () => async (dispatch) => {
   }
 };
 
-export const createRecipe = (Recipe) => async (dispatch) => {
+export const createRecipe = (recipe) => async (dispatch) => {
   try {
-    const { data } = await api.createRecipe(Recipe);
+    const { data } = await api.createRecipe(recipe);
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
@@ -28,9 +28,9 @@ export const createRecipe = (Recipe) => async (dispatch) => {
   }
 };
 
-export const updateRecipe = (id, Recipe) => async (dispatch) => {
+export const updateRecipe = (id, recipe) => async (dispatch) => {
   try {
-    const { data } = await api.updateRecipe(id, Recipe);
+    const { data } = await api.updateRecipe(id, recipe);
 
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
