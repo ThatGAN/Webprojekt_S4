@@ -48,26 +48,26 @@ const Header = () => {
             <a href="/fortschritt">Fortschritt</a>
           </li>
           <li>
-            <a href="/rezepte">Rezepte</a>
+            <a href="/Rezepte">Rezepte</a>
           </li>
           <li>
             <a href="/tagebuch">Tagebuch</a>
           </li>
         </ul>
-        <a className="signIn right">
+        <li className="signIn right">
           <Toolbar className={classes.toolbar}>
             {user?.result ? (
               <div className={classes.profile}>
-                <Avatar
+                {/* <Avatar
                   className={classes.purple}
                   alt={user?.result.name}
                   src={user?.result.imageUrl}
                 >
                   {user?.result.name.charAt(0)}
-                </Avatar>
-                <Typography className={classes.userName} variant="h6">
+                </Avatar> */}
+                {/* <Typography className={classes.userName} variant="h6">
                   {user?.result.name}
-                </Typography>
+                </Typography> */}
                 <Button
                   variant="contained"
                   className={classes.logout}
@@ -88,17 +88,10 @@ const Header = () => {
               </Button>
             )}
           </Toolbar>
-        </a>
+        </li>
       </div>
     </nav>
   );
 };
-
-
-
-
-
-
-
 
 export default Header;

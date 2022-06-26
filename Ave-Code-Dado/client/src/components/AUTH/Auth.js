@@ -8,13 +8,12 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
-import Icon from "./icon";
 import { signin, signup } from "../../actions/auth";
-import { AUTH } from "../constants/actionTypes";
+import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
 import Input from "./Input";
 
@@ -30,7 +29,7 @@ const SignUp = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const NauseNavigate = useNavigate();
   const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -46,9 +45,9 @@ const SignUp = () => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signup(form, history));
+      dispatch(signup(form, NauseNavigate));
     } else {
-      dispatch(signin(form, history));
+      dispatch(signin(form, NauseNavigate));
     }
   };
 
@@ -59,7 +58,7 @@ const SignUp = () => {
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push("/");
+      // NauseNavigate.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -139,7 +138,7 @@ const SignUp = () => {
                 fullWidth
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
-                startIcon={<Icon />}
+                // startIcon={<Icon />}
                 variant="contained"
               >
                 Google Sign In

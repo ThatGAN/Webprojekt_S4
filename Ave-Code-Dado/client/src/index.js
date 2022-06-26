@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import Fortschritt from "./Fortschritt.js";
 import Rezepte from "./RezeptePage.js";
+import Auth from "./components/AUTH/Auth.js";
 import Tagebuch from "./Tagebuch.js";
 import Fruestueck from "./Fruehstueck.js";
 import Mittagessen from "./Mittag.js";
@@ -25,6 +26,7 @@ import Gewicht from "./Gewicht.js";
 // import * as serviceWorker from './serviceWorker';
 import reducers from "./reducers";
 import { createRoot } from "react-dom/client";
+import RezeptePage from "./RezeptePage.js";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 const user = localStorage.getItem("token");
@@ -34,7 +36,8 @@ const Routs = () => (
       <Route exact path="/" element={<App />}></Route>
       <Route exact path="/profil" element={<Profil />}></Route>
       <Route exact path="/fortschritt" element={<Fortschritt />}></Route>
-      <Route exact path="/rezepte" element={<Rezepte />}></Route>
+      <Route exact path="/rezepte/*" element={<Rezepte />}></Route>
+      <Route exact path="/auth" element={<Auth />} />
       {/* <Route exact path="/*" element={<App />}></Route> */}
       {/* <Route exact path="/rezepte" element={<RezeptePage />}></Route> */}
       <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
