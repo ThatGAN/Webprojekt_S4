@@ -22,6 +22,15 @@ function App() {
     .map((meal) => meal.calories)
     .reduce((acc, value) => acc + +value, 0);
 
+    const fabOptions = { direction: "left" }
+
+useEffect(() => {
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            M.FloatingActionButton.init(elems, fabOptions);
+        });
+}, [])
+
   return (
     <div class="App" id="app">
       <BrowserView>
@@ -71,37 +80,38 @@ function App() {
         </div>
       </div>
 
-      <div class="row brown lighten-2">
-        <div class="col s12 card-panel brown lighten-2 z-depth-0">
+      <div class="row transparent lighten-2">
+        <div class="col s12 card-panel transparent z-depth-0">
           <h5 class="center-align heute"> Heute </h5>
         </div>
-        <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
+        <div class="col s1 card-panel transparent z-depth-0"></div>
         <div class="col s4 white  whiteBox">
           {" "}
           <h6 class="center-align">Frühstück</h6>
           <p class="center-align">123 Kalorien</p>{" "}
         </div>
-        <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
+        <div class="col s2 card-panel transparent z-depth-0"></div>
         <div class="col s4 white whiteBox">
           {" "}
           <h6 class="center-align">Mittagessen</h6>
           <p class="center-align">123 Kalorien</p>
         </div>
-        <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
-        <div class="col s12 card-panel brown lighten-2 z-depth-0"></div>
-        <div class="col s1 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
+        <div class="col s12 card-panel transparent z-depth-0"></div>
+        <div class="col s12 card-panel transparent z-depth-0"></div>
+        <div class="col s1 card-panel transparent z-depth-0"></div>
         <div class="col s4 white whiteBox">
           {" "}
           <h6 class="center-align">Abendessen</h6>{" "}
           <p class="center-align">123 Kalorien</p>
         </div>
-        <div class="col s2 card-panel brown lighten-2 lighten-4 z-depth-0"></div>
+        <div class="col s2 card-panel transparent z-depth-0"></div>
         <div class="col s4 white whiteBox">
           {" "}
           <h6 class="center-align">Snacks</h6>{" "}
           <p class="center-align">123 Kalorien</p>
         </div>
       </div>
+
 
       <div class="fixed-action-btn horizontal">
         <a class="btn-floating red btn-large">
