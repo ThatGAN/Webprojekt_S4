@@ -40,10 +40,10 @@ useEffect(() => {
         <HeaderMobile />
       </MobileView>
 
-      <div class="row green">
-        <div class="col s12 card-panel teal green z-depth-0"></div>
-        <div class="col s12 card-panel teal green z-depth-0"></div>
-        <div class="col s12 card-panel teal green z-depth-0">
+      <div class="row transparent">
+        <div class="col s12 card-panel transparent z-depth-0"></div>
+        <div class="col s12 card-panel transparent z-depth-0"></div>
+        <div class="col s12 card-panel transparent z-depth-0">
           <Circle
             score={50}
             color="#669999"
@@ -53,13 +53,14 @@ useEffect(() => {
             class="circle"
           />
         </div>
-        <div class="col s12 card-panel teal green z-depth-0 kalorien">
+        <div class="col s12 card-panel transparent z-depth-0 kalorien">
           {" "}
           <AppControlsCounter total={total} />{" "}
         </div>
-
-        <div class="col s12 card-panel teal green z-depth-0">
-          <div class="col s12 card-panel teal green z-depth-0"></div>
+        <div class="col s1 card-panel transparent z-depth-0 "></div>
+        <div class="col s10 card-panel white z-depth-0 whiteBox ">
+          <div class="col s10 card-panel white z-depth-0 whiteBox "></div>
+          <div class="col s1 card-panel transparent z-depth-0 whiteBox "></div>
           <table class="centered">
             <thead>
               <tr>
