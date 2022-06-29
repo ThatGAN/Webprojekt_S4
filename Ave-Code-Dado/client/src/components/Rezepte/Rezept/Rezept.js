@@ -61,11 +61,11 @@ const Rezept = ({ recipe, setCurrentId }) => {
           recipe.selectedFile ||
           "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
         }
-        name={recipe.name}
       />
       <div className={classes.overlay}>
         <Typography variant="body2">
           {moment(recipe.createdAt).fromNow()}
+          {recipe.title}
         </Typography>
       </div>
 
@@ -83,17 +83,17 @@ const Rezept = ({ recipe, setCurrentId }) => {
       )}
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary" component="h2">
-          {recipe.tags.map((tag) => `#${tag} `)}
+          {recipe.tags.map((tag) => `${tag} `)}
         </Typography>
       </div>
-      <Typography
+      {/* <Typography
         className={classes.title}
         gutterBottom
         variant="h5"
         component="h2"
       >
         {recipe.name}
-      </Typography>
+      </Typography> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {recipe.description}

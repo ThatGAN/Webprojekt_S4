@@ -9,7 +9,7 @@ import { createRecipe, updateRecipe } from "../../actions/recipes";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [recipeData, setRecipeData] = useState({
-    name: "",
+    title: "",
     description: "",
     tags: "",
     kcal: "",
@@ -32,7 +32,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(0);
     setRecipeData({
-      name: "",
+      title: "",
       description: "",
       tags: "",
       kcal: "",
@@ -73,16 +73,16 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Bearbeite" ${recipe.name}"` : "Erstelle ein Rezept"}
+          {currentId ? `Bearbeite" ${recipe.title}"` : "Erstelle ein Rezept"}
         </Typography>
         <TextField
-          name="name"
+          name="title"
           variant="outlined"
-          label="Name"
+          label="Title"
           fullWidth
-          value={recipeData.name}
+          value={recipeData.title}
           onChange={(e) =>
-            setRecipeData({ ...recipeData, name: e.target.value })
+            setRecipeData({ ...recipeData, title: e.target.value })
           }
           style={{ borderBottom: "0px" }}
         />
