@@ -22,14 +22,11 @@ const signin = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res
-      .status(200)
-      .json({ result: oldUser, token, meesage: "Login erfolgreich" });
+    res.status(200).json({ result: oldUser, token });
   } catch (err) {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
-
 const signup = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
 
@@ -51,7 +48,7 @@ const signup = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(201).json({ result, token, message: "User erstellt" });
+    res.status(201).json({ result, token });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
 

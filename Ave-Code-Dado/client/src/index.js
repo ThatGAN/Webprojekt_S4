@@ -29,7 +29,7 @@ import { createRoot } from "react-dom/client";
 import RezeptePage from "./RezeptePage.js";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
-// const user = localStorage.getItem("token");
+const user = localStorage.getItem("token");
 const Routs = () => (
   <Router>
     <Routes>
