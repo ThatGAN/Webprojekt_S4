@@ -1,11 +1,18 @@
-import React from 'react';
+import React from "react";
+import "../../css/Tracker.css"
 
-const AppControlsDelete = ({deleteAllMeals}) =>{
-    return(
-        <div className="app__controls__delete">
-            <button className="btn__delete__all" onClick={()=>deleteAllMeals()}>Löschen</button>
-        </div>
-    );
+const AppControlsDelete = ({ deleteAllMeals }) => {
+  return (
+    <div class="col s1" className="app__controls__delete">
+      <a
+        className="btn__delete__all"
+        class="btn-floating btn-large waves-effect waves-light red left"
+        onClick={() => deleteAllMeals()}
+      >
+        <i class="material-icons ">delete</i>
+      </a>
+    </div>
+  );
 };
 
-export default AppControlsDelete; 
+export default AppControlsDelete;

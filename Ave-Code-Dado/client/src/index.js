@@ -17,7 +17,7 @@ import Fortschritt from "./Fortschritt.js";
 import Rezepte from "./RezeptePage.js";
 import Auth from "./components/AUTH/Auth.js";
 import Tagebuch from "./Tagebuch.js";
-import Fruestueck from "./Fruehstueck.js";
+import Tracker from "./Tracker.js";
 import Mittagessen from "./Mittag.js";
 import Abendessen from "./Abendessen.js";
 import Snack from "./Snack.js";
@@ -41,12 +41,7 @@ const Routs = () => (
       {/* <Route exact path="/*" element={<App />}></Route> */}
       {/* <Route exact path="/rezepte" element={<RezeptePage />}></Route> */}
       <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
-      <Route exact path="/addFruehstueck" element={<Fruestueck />}></Route>
-      <Route exact path="/addMittagessen" element={<Mittagessen />}></Route>
-      <Route exact path="/addAbendessen" element={<Abendessen />}></Route>
-      <Route exact path="/addSnack" element={<Snack />}></Route>
-      <Route exact path="/addAktivitaeten" element={<Aktivitaeten />}></Route>
-      <Route exact path="/addGewicht" element={<Gewicht />}></Route>
+      <Route exact path="/Tracker" element={<Tracker />}></Route>
     </Routes>
   </Router>
 );

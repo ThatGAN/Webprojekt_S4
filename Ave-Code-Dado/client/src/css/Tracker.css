@@ -1,0 +1,44 @@
+.box{
+    color:white;
+   
+}
+
+.app__controls_inputs{
+    color:black;
+}
+input.mahlzeit.mahlzeit{
+background-color: white;
+border-radius: 25px;
+}
+
+input.number.number{
+background-color: white;
+border-radius: 25px;
+}
+
+
+
+.app__meals__container__wrapper{
+    background-color:#4CAF50;
+    
+    margin:10px;
+    margin-top:50px;
+    border-radius: 25px;
+    padding-left: 20px;
+}
+
+a.btn-floating.btn-large.waves-effect.waves-light.red.left{
+    margin: 10px;
+    margin-top:-40px;
+}
+
+.mahlzeitMain{
+    margin-top: 60px;
+}
+
+.app__meals__container__wrapper__inner{
+    color:white;
+}
+
+
+

@@ -15,21 +15,64 @@ import { BrowserView, MobileView } from "react-device-detect";
 function App() {
   const [meals, setMeals] = useState([]);
   const [mealName, setMealName] = useState("");
-  const [calories, setcalories] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
+  const [calories, setCalories] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("");
 
-  const total = meals
-    .map((meal) => meal.calories)
-    .reduce((acc, value) => acc + +value, 0);
+  const addMealsHandler = () => {
+    const oldMeals = meals ? [...meals] : [];
+    const meal = {
+      mealName,
+      calories,
+      id: Math.floor(Math.random() * 1000),
+    };
+    const newMeals = oldMeals.concat(meal);
 
-    const fabOptions = { direction: "left" }
+    if (calories <= 0 || mealName === "") {
+      alert("Feld darf nicht leer sein");
+    } else {
+      setMeals(newMeals);
+      localStorage.setItem("meals", JSON.stringify(newMeals));
+    }
 
-useEffect(() => {
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.fixed-action-btn');
-            M.FloatingActionButton.init(elems, fabOptions);
-        });
-}, [])
+    setMealName("");
+    setCalories("");
+  };
+
+  const deleteMealHandler = (id) => {
+    const oldMeals = [...meals];
+    const newMeals = oldMeals.filter((meal) => meal.id !== id);
+
+    setMeals(newMeals);
+    localStorage.setItem("meals", JSON.stringify(newMeals));
+  };
+
+  const deleteAllMeals = () => {
+    setMeals([]);
+    localStorage.clear();
+  };
+
+  const total =
+    meals !== null
+      ? meals
+          .map((meal) => meal.calories)
+          .reduce((acc, value) => acc + +value, 0)
+      : 0;
+
+  useEffect(() => {
+    const oldState = [...meals];
+    if (selectedFilter === "Ascending") {
+      const ascendingMeals = oldState.sort((a, b) => a.calories - b.calories);
+      setMeals(ascendingMeals);
+    } else if (selectedFilter === "Descending") {
+      const descendingMeals = oldState.sort((a, b) => b.calories - a.calories);
+      setMeals(descendingMeals);
+    }
+  }, [selectedFilter]);
+
+  useEffect(() => {
+    const localStorageMeals = JSON.parse(localStorage.getItem("meals"));
+    setMeals(localStorageMeals);
+  }, [setMeals]);
 
   return (
     <div class="App" id="app">
@@ -61,6 +104,9 @@ useEffect(() => {
         <div class="col s10 card-panel white z-depth-0 whiteBox ">
           <div class="col s10 card-panel white z-depth-0 whiteBox "></div>
           <div class="col s1 card-panel transparent z-depth-0 whiteBox "></div>
+          <div class="col s12 card-panel transparent z-depth-0">
+          <h5 class="center-align heute"> Heute </h5>
+        </div>
           <table class="centered">
             <thead>
               <tr>
@@ -81,77 +127,27 @@ useEffect(() => {
         </div>
       </div>
 
-      <div class="row transparent lighten-2">
-        <div class="col s12 card-panel transparent z-depth-0">
-          <h5 class="center-align heute"> Heute </h5>
-        </div>
-        <div class="col s1 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white  whiteBox">
-          {" "}
-          <h6 class="center-align">Frühstück</h6>
-          <p class="center-align">123 Kalorien</p>{" "}
-        </div>
-        <div class="col s2 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
-          {" "}
-          <h6 class="center-align">Mittagessen</h6>
-          <p class="center-align">123 Kalorien</p>
-        </div>
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s1 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
-          {" "}
-          <h6 class="center-align">Abendessen</h6>{" "}
-          <p class="center-align">123 Kalorien</p>
-        </div>
-        <div class="col s2 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
-          {" "}
-          <h6 class="center-align">Snacks</h6>{" "}
-          <p class="center-align">123 Kalorien</p>
-        </div>
-      </div>
+      
 
 
-      <div class="fixed-action-btn horizontal">
-        <a class="btn-floating red btn-large">
+      <div class="fixed-action-btn horizontal ">
+        <a class="btn-floating red btn-large ">
           <i class="material-icons large">add</i>
         </a>
 
         <ul>
           <li>
-            <a href="/addFruehstueck" class="btn-floating blue">
-              <i class="material-icons"> coffee</i> {/* Frühstück*/}
+            <a href="/Tracker" class="btn-floating blue">
+              <i class="material-icons"> lunch_dining</i> {/* Mahlzeit*/}
             </a>
           </li>
+          
           <li>
-            <a href="/addMittagessen" class="btn-floating blue">
-              <i class="material-icons"> lunch_dining</i> {/* Mittag*/}
-            </a>
-          </li>
-          <li>
-            <a href="/addAbendessen" class="btn-floating blue">
-              <i class="material-icons"> restaurant</i>
-              {/* Abendessen*/}
-            </a>
-          </li>
-          <li>
-            <a href="/addSnack" class="btn-floating blue">
-              <i class="material-icons"> icecream</i>
-              {/* Snacks*/}
-            </a>
-          </li>
-          <li>
-            <a href="addAktivitaeten" class="btn-floating blue">
+            <a href="/Tracker" class="btn-floating blue">
               <i class="material-icons"> fitness_center</i> {/* Aktivitäten*/}
             </a>
           </li>
-          <li>
-            <a href="/addGewicht" class="btn-floating blue">
-              <i class="material-icons"> monitor_weight</i> {/* Gewicht*/}
-            </a>
-          </li>
+         
         </ul>
       </div>
     </div>
