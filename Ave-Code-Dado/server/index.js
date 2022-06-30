@@ -5,7 +5,6 @@ const cors = require("cors");
 const connection = require("./db");
 const userRouter = require("./routes/user.js");
 const recipesRoutes = require("./routes/recipes.js");
-const session = require("express-session");
 require("dotenv").config();
 
 const app = express();

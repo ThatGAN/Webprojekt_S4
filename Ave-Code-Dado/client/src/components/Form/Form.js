@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
+import { useNavigate } from "react-router-dom";
+import ChipInput from "material-ui-chip-input";
 
-import styles1 from "./Form.css";
 import useStyles from "./styles";
 import { createRecipe, updateRecipe } from "../../actions/recipes";
 
@@ -24,9 +25,11 @@ const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (recipe) setRecipeData(recipe);
+    if (!recipe?.title) clear();
+    if (recipe) setDecipeData(recipe);
   }, [recipe]);
 
   const clear = () => {
@@ -34,7 +37,7 @@ const Form = ({ currentId, setCurrentId }) => {
     setRecipeData({
       title: "",
       description: "",
-      tags: "",
+      tags: [],
       kcal: "",
       selectedFile: "",
     });
@@ -44,7 +47,9 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createRecipe({ ...recipeData, name: user?.result?.name }));
+      dispatch(
+        createRecipe({ ...recipeData, name: user?.result?.name }, navigate)
+      );
       clear();
     } else {
       dispatch(
@@ -56,16 +61,28 @@ const Form = ({ currentId, setCurrentId }) => {
 
   if (!user?.result?.name) {
     return (
-      <Paper className={classes.paper}>
+      <Paper className={classes.paper} elevation={6}>
         <Typography variant="h6" align="center">
-          Please Sign In to create your own memories and like other's memories.
+          Bitte Anmelden um eingene Rezepte einzustellen und Rezepte anderer zu
+          Liken
         </Typography>
       </Paper>
     );
   }
 
+  const handleAddChip = (tag) => {
+    setRecipeData({ ...recipeData, tags: [...recipeData.tags, tag] });
+  };
+
+  const handleDeleteChip = (chipToDelete) => {
+    setRecipeData({
+      ...recipeData,
+      tags: recipeData.tags.filter((tag) => tag !== chipToDelete),
+    });
+  };
+
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={6}>
       <form
         autoComplete="off"
         noValidate
@@ -98,16 +115,14 @@ const Form = ({ currentId, setCurrentId }) => {
             setRecipeData({ ...recipeData, description: e.target.value })
           }
         />
-        <TextField
-          className="underline"
+        <ChipInput
           name="tags"
           variant="outlined"
-          label="Zutaten (Komma unterteilt)"
+          label="Tags"
           fullWidth
           value={recipeData.tags}
-          onChange={(e) =>
-            setRecipeData({ ...recipeData, tags: e.target.value.split(",") })
-          }
+          onAdd={(chip) => handleAddChip(chip)}
+          onDelete={(chip) => handleDeleteChip(chip)}
         />
         <TextField
           className="underline"

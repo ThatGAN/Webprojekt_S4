@@ -6,9 +6,11 @@ import decode from "jwt-decode";
 
 import * as actionType from "./constants/actionTypes";
 import useStyles from "./styles";
+import "./App.css";
 
 const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const user2 = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,6 +80,7 @@ const Header = () => {
             </div>
           ) : (
             <Button
+              className={classes.logout}
               component={Link}
               to="/auth"
               variant="contained"
