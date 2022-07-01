@@ -17,6 +17,7 @@ function App() {
   const [mealName, setMealName] = useState("");
   const [calories, setCalories] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
+  const [gewicht, setGewichtName] = useState("");
 
   const addMealsHandler = () => {
     const oldMeals = meals ? [...meals] : [];
@@ -36,6 +37,7 @@ function App() {
 
     setMealName("");
     setCalories("");
+    setGewichtName("");
   };
 
   const deleteMealHandler = (id) => {
@@ -118,12 +120,41 @@ function App() {
 
             <tbody>
               <tr>
-                <td>1</td>
+                <td>{total}</td>
                 <td>1234</td>
                 <td>12</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+      <div class="row transparent">
+        <div class="col s12 card-panel transparent z-depth-0"></div>
+        <div class="col s1 card-panel transparent z-depth-0 "></div>
+        <div class="col s10 card-panel white z-depth-0 whiteBox ">
+          <div class="col s10 card-panel white z-depth-0 whiteBox "></div>
+          <div class="col s1 card-panel transparent z-depth-0 whiteBox "></div>
+          <div class="col s12 card-panel transparent z-depth-0">
+          <h5 class="center-align heute">Aktuelles Gewicht </h5>
+        </div>
+          
+        <div class="input-field col s10">
+          <input
+            className="gewicht"
+            type="gewicht"
+            id="gewicht"
+            value={gewicht}
+            onChange={(e) => setGewichtName(e.target.value)}
+          />
+          <label for="gewicht">Gewicht</label>
+        </div>
+        <div class="col s1">
+          <a class="btn-floating btn-large waves-effect waves-light green right" onClick={console.log(gewicht)}>
+            <i class="material-icons " >add</i>
+          </a>
+        </div>
+
         </div>
       </div>
 
@@ -137,13 +168,13 @@ function App() {
 
         <ul>
           <li>
-            <a href="/Tracker" class="btn-floating blue">
+            <a href="/tracker" class="btn-floating blue">
               <i class="material-icons"> lunch_dining</i> {/* Mahlzeit*/}
             </a>
           </li>
           
           <li>
-            <a href="/Tracker" class="btn-floating blue">
+            <a href="/aktivitaeten" class="btn-floating blue">
               <i class="material-icons"> fitness_center</i> {/* Aktivitäten*/}
             </a>
           </li>

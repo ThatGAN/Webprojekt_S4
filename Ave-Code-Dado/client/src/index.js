@@ -41,7 +41,8 @@ const Routs = () => (
       {/* <Route exact path="/*" element={<App />}></Route> */}
       {/* <Route exact path="/rezepte" element={<RezeptePage />}></Route> */}
       <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
-      <Route exact path="/Tracker" element={<Tracker />}></Route>
+      <Route exact path="/tracker" element={<Tracker />}></Route>
+      <Route exact path="/aktivitaeten" element={<Aktivitaeten />}></Route>
     </Routes>
   </Router>
 );
