@@ -12,6 +12,13 @@ import AppMealsList from "./components/AppMealsList/AppMealsList.js";
 import AppMealsFilter from "./components/AppMealsFilter/AppMealsFilter.js";
 import { BrowserView, MobileView } from "react-device-detect";
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/serviceworker.js")
+    .then((regis) => console.log("service worker registered", regis))
+    .catch((error) => console.log("service worker not registered", error));
+}
+
 function App() {
   const [meals, setMeals] = useState([]);
   const [mealName, setMealName] = useState("");
@@ -22,14 +29,14 @@ function App() {
     .map((meal) => meal.calories)
     .reduce((acc, value) => acc + +value, 0);
 
-    const fabOptions = { direction: "left" }
+  const fabOptions = { direction: "left" };
 
-useEffect(() => {
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.fixed-action-btn');
-            M.FloatingActionButton.init(elems, fabOptions);
-        });
-}, [])
+  useEffect(() => {
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".fixed-action-btn");
+      M.FloatingActionButton.init(elems, fabOptions);
+    });
+  }, []);
 
   return (
     <div class="App" id="app">
@@ -112,7 +119,6 @@ useEffect(() => {
           <p class="center-align">123 Kalorien</p>
         </div>
       </div>
-
 
       <div class="fixed-action-btn horizontal">
         <a class="btn-floating red btn-large">

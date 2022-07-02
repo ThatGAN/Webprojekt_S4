@@ -22,8 +22,7 @@ import Abendessen from "./Abendessen.js";
 import Snack from "./Snack.js";
 import Aktivitaeten from "./Aktivitaeten.js";
 import Gewicht from "./Gewicht.js";
-import PostDetails from "./components/PostDetails/PostDetails";
-// import * as serviceWorker from './serviceWorker';
+import PostDetails from "./components/PostDetails/PostDetails.jsx";
 import reducers from "./reducers";
 import { createRoot } from "react-dom/client";
 import RezeptePage from "./RezeptePage.js";
@@ -37,10 +36,10 @@ const Routs = () => {
         <Route exact path="/" element={<App />}></Route>
         <Route exact path="/profil" element={<Profil />}></Route>
         <Route exact path="/fortschritt" element={<Fortschritt />}></Route>
-        <Route exact path="/rezepte/*" element={<Rezepte />}></Route>
+        <Route exact path="/rezepte" element={<Rezepte />}></Route>
         <Route exact path="/auth" element={<Auth />}></Route>
         <Route exact path="/recipes/search" element={<Rezepte />} />
-        <Route exact path="/recipes/:id" element={<PostDetails />} />
+        <Route exact path="/Rezepte/:id" element={<PostDetails />}></Route>
         <Route exact path="/tagebuch" element={<Tagebuch />}></Route>
         <Route exact path="/addFruehstueck" element={<Fruestueck />}></Route>
         <Route exact path="/addMittagessen" element={<Mittagessen />}></Route>

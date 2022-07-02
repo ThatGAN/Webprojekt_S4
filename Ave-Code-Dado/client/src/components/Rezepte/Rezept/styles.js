@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles({
   media: {
-    height: 0,
+    flexGrow: "1",
     paddingTop: "56.25%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     backgroundBlendMode: "darken",
@@ -29,17 +29,27 @@ export default makeStyles({
   },
   overlay2: {
     position: "absolute",
-    top: "20px",
-    right: "20px",
+    top: "40px",
+    right: "40px",
     color: "white",
   },
   grid: {
     display: "flex",
   },
   details: {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "20px",
+    position: "absolute",
+    marginLeft: "1rem",
+    bottom: "1rem",
+    left: "1rem",
+    color: "white !important",
+  },
+  description: {
+    position: "absolute",
+    marginLeft: "1rem",
+    left: "1rem",
+    fontSize: "3rem",
+    bottom: "3rem",
+    color: "white !important",
   },
   title: {
     padding: "0 16px",

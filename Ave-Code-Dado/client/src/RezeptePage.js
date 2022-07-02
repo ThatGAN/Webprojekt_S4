@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grow,
@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import Rezepte from "./components/Rezepte/Rezepte";
 import { useNavigate, useLocation } from "react-router-dom";
 import Form from "./components/Form/Form";
-import { getRecipes } from "./actions/recipes";
+import { getRecipes, getRecipesBySearch } from "./actions/recipes";
 import useStyles from "./styles";
 import Pagination from "./components/pagination";
 import ChipInput from "material-ui-chip-input";
@@ -64,18 +64,19 @@ const RezeptePage = () => {
       </div>
       <Container>
         <Grow in>
-          <Container maxWidth="xl">
+          <Container maxWidth="lg">
             <Grid
               container
               justifyContent="space-between"
               alignItems="stretch"
               spacing={3}
+              // columns={{ lg: 12 }}
               className={classes.gridContainer}
             >
-              <Grid item xs={12} sm={6} md={9}>
+              <Grid item xs={12} sm={6} md={9} lg={9}>
                 <Rezepte setCurrentId={setCurrentId} />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid item xs={12} sm={6} md={3} lg={3}>
                 <AppBar
                   className={classes.appBarSearch}
                   position="static"

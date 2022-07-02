@@ -45,10 +45,8 @@ const getRecipesBySearch = async (req, res) => {
 
 const getRecipe = async (req, res) => {
   const { id } = req.params;
-
   try {
     const recipe = await RecipePost.findById(id);
-
     res.status(200).json(recipe);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -57,6 +55,7 @@ const getRecipe = async (req, res) => {
 
 const createRecipe = async (req, res) => {
   const recipe = req.body;
+  recipe.likes = 0;
 
   const newRecipePost = new RecipePost({
     ...recipe,
@@ -109,16 +108,29 @@ const deleteRecipe = async (req, res) => {
 const likeRecipe = async (req, res) => {
   const { id } = req.params;
 
+  console.log(`id: ${id}`);
+
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No recipe with id: ${id}`);
 
   const recipe = await RecipePost.findById(id);
 
-  const updatedRecipe = await RecipePost.findByIdAndUpdate(
-    id,
-    { likeCount: recipe.likeCount + 1 },
-    { new: true }
-  );
+  const index = recipe.likes.findIndex((id) => id === String(req.userId));
+
+  if (index === -1) {
+    recipe.likes.push(req.userId);
+  } else {
+    recipe.likes = recipe.likes.filter((id) => id !== String(req.userId));
+  }
+  const updatedRecipe = await RecipePost.findByIdAndUpdate(id, recipe, {
+    new: true,
+  });
+
+  // const updatedRecipe = await RecipePost.findByIdAndUpdate(
+  //   id,
+  //   { likes: recipe.likes + 1 },
+  //   { new: true }
+  // );
 
   res.json(updatedRecipe);
 };

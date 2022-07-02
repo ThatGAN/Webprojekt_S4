@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
@@ -7,8 +7,12 @@ import ChipInput from "material-ui-chip-input";
 
 import useStyles from "./styles";
 import { createRecipe, updateRecipe } from "../../actions/recipes";
+import { Camera } from "react-camera-pro";
 
 const Form = ({ currentId, setCurrentId }) => {
+  const camera = useRef(null);
+  const [image, setImage] = useState(null);
+
   const [recipeData, setRecipeData] = useState({
     title: "",
     description: "",
@@ -19,7 +23,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const recipe = useSelector((state) =>
     currentId
-      ? state.recipes.find((message) => message._id === currentId)
+      ? state.recipes.recipes.find((message) => message._id === currentId)
       : null
   );
   const dispatch = useDispatch();
@@ -29,7 +33,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   useEffect(() => {
     if (!recipe?.title) clear();
-    if (recipe) setDecipeData(recipe);
+    if (recipe) setRecipeData(recipe);
   }, [recipe]);
 
   const clear = () => {
@@ -143,6 +147,13 @@ const Form = ({ currentId, setCurrentId }) => {
               setRecipeData({ ...recipeData, selectedFile: base64 })
             }
           />
+          <div>
+            <Camera ref={camera} />
+            <button onClick={() => setImage(camera.current.takePhoto())}>
+              Take photo
+            </button>
+            <img src={image} alt="Taken photo" />
+          </div>
         </div>
         <Button
           className={classes.buttonSubmit}

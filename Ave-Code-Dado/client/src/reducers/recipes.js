@@ -26,7 +26,7 @@ export default (state = { isLoading: true, recipes: [] }, action) => {
     case FETCH_BY_SEARCH:
       return { ...state, recipes: action.payload.data };
     case FETCH_RECIPE:
-      return { ...state, recipe: action.payload.post };
+      return { ...state, recipe: action.payload.recipe };
     case LIKE:
       return {
         ...state,

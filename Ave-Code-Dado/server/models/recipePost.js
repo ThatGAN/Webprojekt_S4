@@ -9,7 +9,6 @@ const recipeSchema = new Schema({
   tags: [String],
   kcal: Number,
   selectedFile: String,
-
   likes: { type: [String], default: [] },
   createdAt: {
     type: Date,

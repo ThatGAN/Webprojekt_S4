@@ -7,7 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getRecipe, getRecipesBySearch } from '../../actions/recipes';
 import useStyles from './styles';
 
-const Rezept = () => {
+const PostDetails = () => {
   const { recipe, recipes, isLoading } = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const Rezept = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    console.log(JSON.stringify(recipe))
     dispatch(getRecipe(id));
   }, [id]);
 
@@ -24,21 +25,22 @@ const Rezept = () => {
     }
   }, [recipe]);
 
-  if (!recipe) return null;
+  if (!recipe) return <div>test</div>;
 
-  const openRecipe = (_id) => navigate(`/recipes/${_id}`);
+  const openRecipe = (_id) => navigate(`/Rezepte/${_id}`);
 
-  if (isLoading) {
-    return (
-      <Paper elevation={6} className={classes.loadingPaper}>
-        <CircularProgress size="7em" />
-      </Paper>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Paper elevation={6} className={classes.loadingPaper}>
+  //       <CircularProgress size="7em" />
+  //     </Paper>
+  //   );
+  // }
 
   const recommendedRecipes = recipes.filter(({ _id }) => _id !== recipe._id);
 
   return (
+   
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
@@ -47,11 +49,8 @@ const Rezept = () => {
           <Typography gutterBottom variant="body1" component="p">{recipe.description}</Typography>
           {/* <Typography variant="h6">Created by: {recipe.name}</Typography> */}
           <Typography variant="body1">{moment(recipe.createdAt).fromNow()}</Typography>
-          <Divider style={{ margin: '20px 0' }} />
-          {/* <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
-          <Divider style={{ margin: '20px 0' }} />
-          <Typography variant="body1"><strong>Comments - coming soon!</strong></Typography> */}
-          <Divider style={{ margin: '20px 0' }} />
+          
+        
         </div>
         <div className={classes.imageSection}>
           <img className={classes.media} src={recipe.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={recipe.title} />
@@ -65,9 +64,9 @@ const Rezept = () => {
             {recommendedRecipes.map(({ title, description , likes, kcal, selectedFile, _id }) => (
               <div style={{ margin: '20px', cursor: 'pointer' }} onClick={() => openRecipe(_id)} key={_id}>
                 <Typography gutterBottom variant="h6">{title}</Typography>
-                <Typography gutterBottom variant="subtitle2">{name}</Typography>
-                <Typography gutterBottom variant="subtitle2">{message}</Typography>
+                <Typography gutterBottom variant="subtitle2">{description}</Typography>
                 <Typography gutterBottom variant="subtitle1">Likes: {likes.length}</Typography>
+                <Typography gutterBottom variant="subtitle1">kcal {kcal}</Typography>
                 <img src={selectedFile} width="200px" />
               </div>
             ))}
@@ -78,4 +77,4 @@ const Rezept = () => {
   );
 };
 
-export default Rezept;
+export default PostDetails;

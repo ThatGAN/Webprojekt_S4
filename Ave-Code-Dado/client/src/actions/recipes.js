@@ -80,6 +80,7 @@ export const updateRecipe = (id, recipe) => async (dispatch) => {
 
 export const likeRecipe = (id) => async (dispatch) => {
   try {
+    console.log("data: ", id);
     const { data } = await api.likeRecipe(id);
 
     dispatch({ type: LIKE, payload: data });

@@ -26,6 +26,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const Likes = () => {
+    // console.log(`likes: ${JSON.stringify(recipe)}`);
     if (recipe?.likes?.length > 0) {
       return recipe.likes.find(
         (like) => like === (user?.result?.googleId || user?.result?._id)
@@ -56,10 +57,10 @@ const Rezept = ({ recipe, setCurrentId }) => {
     );
   };
   const openPost = (e) => {
-    navigate(`/recipes/${recipe._id}`);
+    navigate(`/Rezepte/${recipe._id}`);
   };
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} raised elevation={6}>
       <ButtonBase
         component="span"
         name="test"
@@ -72,6 +73,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
             recipe.selectedFile ||
             "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
           }
+          // title={recipe.title}
         />
         <div className={classes.overlay}>
           <Typography variant="h5">{recipe.title}</Typography>
@@ -82,9 +84,12 @@ const Rezept = ({ recipe, setCurrentId }) => {
 
         {(user?.result?.googleId === recipe?.creator ||
           user?.result?._id === recipe?.creator) && (
-          <div className={classes.overlay2}>
+          <div className={classes.overlay2} name="edit">
             <Button
-              onClick={() => setCurrentId(recipe._id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentId(recipe._id);
+              }}
               style={{ color: "white" }}
               size="small"
             >
@@ -93,7 +98,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
           </div>
         )}
         <div className={classes.details}>
-          <Typography variant="body2" color="textSecondary" component="h2">
+          <Typography variant="body2" component="h2">
             {recipe.tags.map((tag) => `${tag} `)}
           </Typography>
         </div>
@@ -105,11 +110,9 @@ const Rezept = ({ recipe, setCurrentId }) => {
       >
         {recipe.name}
       </Typography> */}
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {recipe.description}
-          </Typography>
-        </CardContent>
+        <div className={classes.description}>
+          <Typography>{recipe.description}</Typography>
+        </div>
       </ButtonBase>
       <CardActions className={classes.cardActions}>
         <Button
@@ -121,8 +124,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
           <Likes />
         </Button>
         <Typography>kcal:{recipe.kcal}</Typography>
-        {(user?.result?.googleId === recipe?.creator ||
-          user?.result?._id === recipe?.creator) && (
+        {user?.result?._id === recipe?.creator && (
           <Button
             size="small"
             color="secondary"

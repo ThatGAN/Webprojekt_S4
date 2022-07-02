@@ -33,15 +33,6 @@ export default makeStyles((theme) => ({
     justifyContent: "flex-end",
     width: "400px",
   },
-  // profile: {
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   width: "400px",
-  // },
-  // userName: {
-  //   display: "flex",
-  //   alignItems: "center",
-  // },
   brandContainer: {
     display: "flex",
     alignItems: "center",
@@ -50,7 +41,6 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
-  // signinRight: {},
   signIn: {
     alignItems: "right",
     position: "right",

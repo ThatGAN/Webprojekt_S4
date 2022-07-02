@@ -21,7 +21,7 @@ const Rezepte = ({ setCurrentId }) => {
       spacing={3}
     >
       {recipes?.map((recipe) => (
-        <Grid key={recipe._id} item xs={12} sm={12} md={6} lg={3}>
+        <Grid key={recipe._id} item xs={12} sm={12} md={6} lg={6}>
           <Rezept recipe={recipe} setCurrentId={setCurrentId} />
         </Grid>
       ))}
