@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div class="App" id="app">
+    <div className="App" id="app">
       <BrowserView>
         <Header />
       </BrowserView>
@@ -47,28 +47,28 @@ function App() {
         <HeaderMobile />
       </MobileView>
 
-      <div class="row transparent">
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s12 card-panel transparent z-depth-0">
+      <div className="row transparent">
+        <div className="col s12 card-panel transparent z-depth-0"></div>
+        <div className="col s12 card-panel transparent z-depth-0"></div>
+        <div className="col s12 card-panel transparent z-depth-0">
           <Circle
             score={50}
             color="#669999"
             orientation="up"
             width="15"
             diameter="300"
-            class="circle"
+            className="circle"
           />
         </div>
-        <div class="col s12 card-panel transparent z-depth-0 kalorien">
+        <div className="col s12 card-panel transparent z-depth-0 kalorien">
           {" "}
           <AppControlsCounter total={total} />{" "}
         </div>
-        <div class="col s1 card-panel transparent z-depth-0 "></div>
-        <div class="col s10 card-panel white z-depth-0 whiteBox ">
-          <div class="col s10 card-panel white z-depth-0 whiteBox "></div>
-          <div class="col s1 card-panel transparent z-depth-0 whiteBox "></div>
-          <table class="centered">
+        <div className="col s1 card-panel transparent z-depth-0 "></div>
+        <div className="col s10 card-panel white z-depth-0 whiteBox ">
+          <div className="col s10 card-panel white z-depth-0 whiteBox "></div>
+          <div className="col s1 card-panel transparent z-depth-0 whiteBox "></div>
+          <table className="centered">
             <thead>
               <tr>
                 <th>Gegessen </th>
@@ -88,74 +88,75 @@ function App() {
         </div>
       </div>
 
-      <div class="row transparent lighten-2">
-        <div class="col s12 card-panel transparent z-depth-0">
-          <h5 class="center-align heute"> Heute </h5>
+      <div className="row transparent lighten-2">
+        <div className="col s12 card-panel transparent z-depth-0">
+          <h5 className="center-align heute"> Heute </h5>
         </div>
-        <div class="col s1 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white  whiteBox">
+        <div className="col s1 card-panel transparent z-depth-0"></div>
+        <div className="col s4 white  whiteBox">
           {" "}
-          <h6 class="center-align">Frühstück</h6>
-          <p class="center-align">123 Kalorien</p>{" "}
+          <h6 className="center-align">Frühstück</h6>
+          <p className="center-align">123 Kalorien</p>{" "}
         </div>
-        <div class="col s2 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
+        <div className="col s2 card-panel transparent z-depth-0"></div>
+        <div className="col s4 white whiteBox">
           {" "}
-          <h6 class="center-align">Mittagessen</h6>
-          <p class="center-align">123 Kalorien</p>
+          <h6 className="center-align">Mittagessen</h6>
+          <p className="center-align">123 Kalorien</p>
         </div>
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s12 card-panel transparent z-depth-0"></div>
-        <div class="col s1 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
+        <div className="col s12 card-panel transparent z-depth-0"></div>
+        <div className="col s12 card-panel transparent z-depth-0"></div>
+        <div className="col s1 card-panel transparent z-depth-0"></div>
+        <div className="col s4 white whiteBox">
           {" "}
-          <h6 class="center-align">Abendessen</h6>{" "}
-          <p class="center-align">123 Kalorien</p>
+          <h6 className="center-align">Abendessen</h6>{" "}
+          <p className="center-align">123 Kalorien</p>
         </div>
-        <div class="col s2 card-panel transparent z-depth-0"></div>
-        <div class="col s4 white whiteBox">
+        <div className="col s2 card-panel transparent z-depth-0"></div>
+        <div className="col s4 white whiteBox">
           {" "}
-          <h6 class="center-align">Snacks</h6>{" "}
-          <p class="center-align">123 Kalorien</p>
+          <h6 className="center-align">Snacks</h6>{" "}
+          <p className="center-align">123 Kalorien</p>
         </div>
       </div>
 
-      <div class="fixed-action-btn horizontal">
-        <a class="btn-floating red btn-large">
-          <i class="material-icons large">add</i>
+      <div className="fixed-action-btn horizontal">
+        <a className="btn-floating red btn-large">
+          <i className="material-icons large">add</i>
         </a>
 
         <ul>
           <li>
-            <a href="/addFruehstueck" class="btn-floating blue">
-              <i class="material-icons"> coffee</i> {/* Frühstück*/}
+            <a href="/addFruehstueck" className="btn-floating blue">
+              <i className="material-icons"> coffee</i> {/* Frühstück*/}
             </a>
           </li>
           <li>
-            <a href="/addMittagessen" class="btn-floating blue">
-              <i class="material-icons"> lunch_dining</i> {/* Mittag*/}
+            <a href="/addMittagessen" className="btn-floating blue">
+              <i className="material-icons"> lunch_dining</i> {/* Mittag*/}
             </a>
           </li>
           <li>
-            <a href="/addAbendessen" class="btn-floating blue">
-              <i class="material-icons"> restaurant</i>
+            <a href="/addAbendessen" className="btn-floating blue">
+              <i className="material-icons"> restaurant</i>
               {/* Abendessen*/}
             </a>
           </li>
           <li>
-            <a href="/addSnack" class="btn-floating blue">
-              <i class="material-icons"> icecream</i>
+            <a href="/addSnack" className="btn-floating blue">
+              <i className="material-icons"> icecream</i>
               {/* Snacks*/}
             </a>
           </li>
           <li>
-            <a href="addAktivitaeten" class="btn-floating blue">
-              <i class="material-icons"> fitness_center</i> {/* Aktivitäten*/}
+            <a href="addAktivitaeten" className="btn-floating blue">
+              <i className="material-icons"> fitness_center</i>{" "}
+              {/* Aktivitäten*/}
             </a>
           </li>
           <li>
-            <a href="/addGewicht" class="btn-floating blue">
-              <i class="material-icons"> monitor_weight</i> {/* Gewicht*/}
+            <a href="/addGewicht" className="btn-floating blue">
+              <i className="material-icons"> monitor_weight</i> {/* Gewicht*/}
             </a>
           </li>
         </ul>

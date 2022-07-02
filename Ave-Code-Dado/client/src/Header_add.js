@@ -3,9 +3,9 @@ import React, { Component } from "react";
 function HeaderAdd(props) {
   return (
     <nav>
-      <div class="nav-wrapper z-depth-1">
-        <a class="brand-logo center">{props.titel}</a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <div className="nav-wrapper z-depth-1">
+        <a className="brand-logo center">{props.titel}</a>
+        <ul id="nav-mobile" className="left hide-on-med-and-down">
           <li>
             <a href="/">Zurück</a>
           </li>

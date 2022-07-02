@@ -42,6 +42,10 @@ const SignUp = () => {
     setShowPassword(false);
   };
 
+  const back = () => {
+    navigate("/");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -149,6 +153,7 @@ const SignUp = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           /> */}
+
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
@@ -156,7 +161,8 @@ const SignUp = () => {
                   ? "Already have an account? Sign in"
                   : "Don't have an account? Sign Up"}
               </Button>
-            </Grid>
+            </Grid>{" "}
+            <Button onClick={back}>Zurück</Button>
           </Grid>
         </form>
       </Paper>

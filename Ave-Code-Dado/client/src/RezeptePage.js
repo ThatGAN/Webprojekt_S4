@@ -18,6 +18,8 @@ import { getRecipes, getRecipesBySearch } from "./actions/recipes";
 import useStyles from "./styles";
 import Pagination from "./components/pagination";
 import ChipInput from "material-ui-chip-input";
+import HeaderMobile from "./HeaderMobile";
+import { BrowserView, MobileView } from "react-device-detect";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -60,7 +62,12 @@ const RezeptePage = () => {
   return (
     <>
       <div>
-        <Header />
+        <BrowserView>
+          <Header />
+        </BrowserView>
+        <MobileView>
+          <HeaderMobile />
+        </MobileView>
       </div>
       <Container>
         <Grow in>

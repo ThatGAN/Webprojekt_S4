@@ -7,7 +7,7 @@ import ChipInput from "material-ui-chip-input";
 
 import useStyles from "./styles";
 import { createRecipe, updateRecipe } from "../../actions/recipes";
-import { Camera } from "react-camera-pro";
+import "./Form.css";
 
 const Form = ({ currentId, setCurrentId }) => {
   const camera = useRef(null);
@@ -54,6 +54,7 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(
         createRecipe({ ...recipeData, name: user?.result?.name }, navigate)
       );
+      location.reload();
       clear();
     } else {
       dispatch(
@@ -122,7 +123,7 @@ const Form = ({ currentId, setCurrentId }) => {
         <ChipInput
           name="tags"
           variant="outlined"
-          label="Tags"
+          label="Tags (Einzeln mit Enter bestätigen)"
           fullWidth
           value={recipeData.tags}
           onAdd={(chip) => handleAddChip(chip)}
@@ -147,13 +148,13 @@ const Form = ({ currentId, setCurrentId }) => {
               setRecipeData({ ...recipeData, selectedFile: base64 })
             }
           />
-          <div>
+          {/* <div>
             <Camera ref={camera} />
             <button onClick={() => setImage(camera.current.takePhoto())}>
               Take photo
             </button>
             <img src={image} alt="Taken photo" />
-          </div>
+          </div> */}
         </div>
         <Button
           className={classes.buttonSubmit}
