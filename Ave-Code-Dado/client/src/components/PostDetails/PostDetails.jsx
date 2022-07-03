@@ -51,7 +51,7 @@ const PostDetails = () => {
           <Typography variant="h3" component="h2">{recipe.title}</Typography>
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{recipe.tags.map((tag) => `#${tag} `)}</Typography>
           <Typography gutterBottom variant="body1" component="p">{recipe.description}</Typography>
-          <Typography gutterBottm variant="body2">{recipe.zutaten}</Typography>
+          <Typography gutterBottom variant="body2">{recipe.zutaten}</Typography>
           <Typography variant="body1">{moment(recipe.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
         </div>

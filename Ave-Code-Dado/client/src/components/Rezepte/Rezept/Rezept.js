@@ -103,7 +103,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
         </div>
         <div className={classes.zutaten}>
           <Typography>
-            {recipe.zutaten?.split(" ").splice(0, 10).join(" ")}...
+            {recipe.zutaten?.split(" ").splice(0, 5).join(" ")}...
           </Typography>
         </div>
         <div className={classes.description}>

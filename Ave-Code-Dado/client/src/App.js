@@ -72,7 +72,6 @@ function App() {
 
   useEffect(() => {
     const localStorageGoal = +JSON.parse(localStorage.getItem("goal"));
-    console.log("G:", localStorageGoal);
     setGoal(localStorageGoal);
   }, [setGoal]);
 
@@ -106,15 +105,15 @@ function App() {
         <div className="col s12 card-panel transparent z-depth-0 kalorien">
           <AppControlsCounter total={total} />{" "}
         </div>
-        <div class="col s1 card-panel transparent z-depth-0 "></div>
-        <div class="col s10 card-panel white z-depth-0 whiteBox ">
-          <div class="col s10 card-panel white z-depth-0 whiteBox "></div>
-          <div class="col s1 card-panel transparent z-depth-0 whiteBox "></div>
-          <div class="col s12 card-panel transparent z-depth-0">
-            <h5 class="center-align heute"> Heute </h5>
+        <div className="col s1 card-panel transparent z-depth-0 "></div>
+        <div className="col s10 card-panel white z-depth-0 whiteBox ">
+          <div className="col s10 card-panel white z-depth-0 whiteBox "></div>
+          <div className="col s1 card-panel transparent z-depth-0 whiteBox "></div>
+          <div className="col s12 card-panel transparent z-depth-0">
+            <h5 className="center-align heute"> Heute </h5>
           </div>
 
-          <table class="centered">
+          <table className="centered">
             <thead>
               <tr>
                 <AppControlsInputs
@@ -125,46 +124,38 @@ function App() {
                   setCalories={setCalories}
                 />
               </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                {" "}
-                <div className="col s9 card-panel transparent z-depth-0">
-                  <div class="input-field col s10">
-                    <input
-                      className="goal"
-                      type="number"
-                      id="goal"
-                      // value={goal}
-                      onChange={(e) => setGoal(e.target.value)}
-                      min={0}
-                    />
-                    <label for="goal">Goal</label>
-                  </div>
-                  <a
-                    class="btn-floating btn-large waves-effect waves-light green right"
-                    onClick={(e) => addGoalHandler(e.target.value)}
-                  >
-                    <i class="material-icons ">add</i>
-                  </a>
-                </div>
-              </tr>
-              <tr>
-                <th>Gesamt: {total} kcal</th>
-                <th>Goal: {goal} kcal</th>
-              </tr>
-            </tbody>
+            </thead>{" "}
+            <div className="col s9 card-panel transparent z-depth-0">
+              <div className="input-field col s10">
+                <input
+                  className="goal"
+                  type="number"
+                  id="goal"
+                  // value={goal}
+                  onChange={(e) => setGoal(e.target.value)}
+                  min={0}
+                />
+                <label htmlFor="goal">Goal</label>
+              </div>
+              <a
+                className="btn-floating btn-large waves-effect waves-light green right"
+                onClick={(e) => addGoalHandler(e.target.value)}
+              >
+                <i className="material-icons ">add</i>
+              </a>
+            </div>
+            <th>Gesamt: {total} kcal</th>
+            <th>Goal: {goal} kcal</th>
           </table>
         </div>
       </div>
 
-      <div class="row transparent">
-        <div class="col s12 card-panel transparent z-depth-0"></div>
+      <div className="row transparent">
+        <div className="col s12 card-panel transparent z-depth-0"></div>
 
-        <div class="col s1 card-panel transparent z-depth-0 "></div>
+        <div className="col s1 card-panel transparent z-depth-0 "></div>
         <div
-          class="col s10 card-panel white z-depth-0 whiteBox"
+          className="col s10 card-panel white z-depth-0 whiteBox"
           style={{ width: 310 }}
         >
           <div
@@ -176,23 +167,24 @@ function App() {
             Mahlzeiten:
           </div>
           <AppMealsList meals={meals} deleteMealHandler={deleteMealHandler} />
-          <div class="input-field col s10"></div>
+          <div className="input-field col s10"></div>
           <AppControlsDelete deleteAllMeals={deleteAllMeals} />
-          <div class="col s1"></div>
+          <div className="col s1"></div>
         </div>
       </div>
 
-      <div class="fixed-action-btn horizontal ">
+      <div className="fixed-action-btn horizontal ">
         <ul>
           <li>
-            <a href="/tracker" class="btn-floating blue">
-              <i class="material-icons"> lunch_dining</i> {/* Mahlzeit*/}
+            <a href="/tracker" className="btn-floating blue">
+              <i className="material-icons"> lunch_dining</i> {/* Mahlzeit*/}
             </a>
           </li>
 
           <li>
-            <a href="/aktivitaeten" class="btn-floating blue">
-              <i class="material-icons"> fitness_center</i> {/* Aktivitäten*/}
+            <a href="/aktivitaeten" className="btn-floating blue">
+              <i className="material-icons"> fitness_center</i>{" "}
+              {/* Aktivitäten*/}
             </a>
           </li>
         </ul>
