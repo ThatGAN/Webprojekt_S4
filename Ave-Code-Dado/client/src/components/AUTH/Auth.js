@@ -17,6 +17,7 @@ import { signin, signup } from "../../actions/auth";
 import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
 import Input from "./Input";
+import "./auth.css";
 
 const initialState = {
   firstName: "",
@@ -89,6 +90,7 @@ const SignUp = () => {
             {isSignup && (
               <>
                 <Input
+                  // InputProps={{ min: 0, style: { paddingLeft: "15px" } }}
                   name="firstName"
                   label="First Name"
                   handleChange={handleChange}
@@ -104,6 +106,7 @@ const SignUp = () => {
               </>
             )}
             <Input
+              // inputProps={{ min: 0, style: { paddingLeft: "15px" } }}
               name="email"
               label="Email Address"
               handleChange={handleChange}
@@ -154,7 +157,17 @@ const SignUp = () => {
             cookiePolicy="single_host_origin"
           /> */}
 
-          <Grid container justify="flex-end">
+          <Grid container justify="space-between">
+            <Grid item>
+              <Button
+                justify="flex-start"
+                onClick={back}
+                style={{ backgroundColor: "#f50057", marginLeft: "5px" }}
+                className={classes.backButton}
+              >
+                Zurück
+              </Button>
+            </Grid>
             <Grid item>
               <Button onClick={switchMode}>
                 {isSignup
@@ -162,7 +175,6 @@ const SignUp = () => {
                   : "Don't have an account? Sign Up"}
               </Button>
             </Grid>{" "}
-            <Button onClick={back}>Zurück</Button>
           </Grid>
         </form>
       </Paper>

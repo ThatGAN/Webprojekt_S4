@@ -90,10 +90,11 @@ const RezeptePage = () => {
                   color="inherit"
                 >
                   <TextField
+                    inputProps={{ min: 0, style: { paddingLeft: "15px" } }}
                     onKeyDown={handleKeyPress}
                     name="search"
                     variant="outlined"
-                    label="Search Memories"
+                    label="Rezepte Suchen"
                     fullWidth
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -103,7 +104,7 @@ const RezeptePage = () => {
                     value={tags}
                     onAdd={(chip) => handleAddChip(chip)}
                     onDelete={(chip) => handleDeleteChip(chip)}
-                    label="Search Tags"
+                    label="Tags Suchen (mit Enter einzeln bestätigen)"
                     variant="outlined"
                   />
                   <Button

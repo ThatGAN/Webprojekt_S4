@@ -10,12 +10,10 @@ import { createRecipe, updateRecipe } from "../../actions/recipes";
 import "./Form.css";
 
 const Form = ({ currentId, setCurrentId }) => {
-  const camera = useRef(null);
-  const [image, setImage] = useState(null);
-
   const [recipeData, setRecipeData] = useState({
     title: "",
     description: "",
+    zutaten: "",
     tags: "",
     kcal: "",
     selectedFile: "",
@@ -41,6 +39,7 @@ const Form = ({ currentId, setCurrentId }) => {
     setRecipeData({
       title: "",
       description: "",
+      zutaten: "",
       tags: [],
       kcal: "",
       selectedFile: "",
@@ -98,6 +97,7 @@ const Form = ({ currentId, setCurrentId }) => {
           {currentId ? `Bearbeite" ${recipe.title}"` : "Erstelle ein Rezept"}
         </Typography>
         <TextField
+          inputProps={{ min: 0, style: { paddingLeft: "15px" } }}
           name="title"
           variant="outlined"
           label="Title"
@@ -120,16 +120,29 @@ const Form = ({ currentId, setCurrentId }) => {
             setRecipeData({ ...recipeData, description: e.target.value })
           }
         />
+        <TextField
+          name="zutaten"
+          variant="outlined"
+          label="Zutaten"
+          fullWidth
+          multiline
+          minRows={3}
+          value={recipeData.zutaten}
+          onChange={(e) =>
+            setRecipeData({ ...recipeData, zutaten: e.target.value })
+          }
+        />
         <ChipInput
           name="tags"
           variant="outlined"
-          label="Tags (Einzeln mit Enter bestätigen)"
+          label="Tags (mit Enter einzeln bestätigen)"
           fullWidth
           value={recipeData.tags}
           onAdd={(chip) => handleAddChip(chip)}
           onDelete={(chip) => handleDeleteChip(chip)}
         />
         <TextField
+          inputProps={{ min: 0, style: { paddingLeft: "15px" } }}
           className="underline"
           name="kcal"
           variant="outlined"

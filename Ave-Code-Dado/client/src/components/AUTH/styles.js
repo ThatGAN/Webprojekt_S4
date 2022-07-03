@@ -30,4 +30,7 @@ export default makeStyles((theme) => ({
   Input: {
     marginLeft: 4,
   },
+  backButton: {
+    marginRight: 4,
+  },
 }));

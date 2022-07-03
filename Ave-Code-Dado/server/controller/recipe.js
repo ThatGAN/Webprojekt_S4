@@ -74,7 +74,8 @@ const createRecipe = async (req, res) => {
 
 const updateRecipe = async (req, res) => {
   const { id } = req.params;
-  const { title, description, creator, tags, kcal, selectedFile } = req.body;
+  const { title, description, zutaten, creator, tags, kcal, selectedFile } =
+    req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
@@ -82,6 +83,7 @@ const updateRecipe = async (req, res) => {
   const updatedRecipe = {
     title,
     description,
+    zutaten,
     creator,
     tags,
     kcal,

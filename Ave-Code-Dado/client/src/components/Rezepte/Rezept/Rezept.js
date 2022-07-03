@@ -26,7 +26,6 @@ const Rezept = ({ recipe, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const Likes = () => {
-    // console.log(`likes: ${JSON.stringify(recipe)}`);
     if (recipe?.likes?.length > 0) {
       return recipe.likes.find(
         (like) => like === (user?.result?.googleId || user?.result?._id)
@@ -99,19 +98,18 @@ const Rezept = ({ recipe, setCurrentId }) => {
         )}
         <div className={classes.details}>
           <Typography variant="body2" component="h2">
-            {recipe.tags.map((tag) => `${tag} `)}
+            #{recipe.tags.map((tag) => `${tag} `)}
           </Typography>
         </div>
-        {/* <Typography
-        className={classes.title}
-        gutterBottom
-        variant="h5"
-        component="h2"
-      >
-        {recipe.name}
-      </Typography> */}
+        <div className={classes.zutaten}>
+          <Typography>
+            {recipe.zutaten?.split(" ").splice(0, 10).join(" ")}...
+          </Typography>
+        </div>
         <div className={classes.description}>
-          <Typography>{recipe.description}</Typography>
+          <Typography>
+            {recipe.description.split(" ").splice(0, 10).join(" ")}...
+          </Typography>
         </div>
       </ButtonBase>
       <CardActions className={classes.cardActions}>
