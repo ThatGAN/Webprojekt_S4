@@ -33,15 +33,6 @@ export default makeStyles((theme) => ({
     justifyContent: "flex-end",
     width: "400px",
   },
-  profile: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "400px",
-  },
-  userName: {
-    display: "flex",
-    alignItems: "center",
-  },
   brandContainer: {
     display: "flex",
     alignItems: "center",
@@ -49,5 +40,28 @@ export default makeStyles((theme) => ({
   purple: {
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
+  },
+  signIn: {
+    alignItems: "right",
+    position: "right",
+  },
+  logout: {
+    marginRight: "10px",
+  },
+  appBarSearch: {
+    borderRadius: 4,
+    marginBottom: "1rem",
+    display: "flex",
+    padding: "16px",
+  },
+  pagination: {
+    borderRadius: 4,
+    marginTop: "1rem",
+    padding: "16px",
+  },
+  gridContainer: {
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column-reverse",
+    },
   },
 }));

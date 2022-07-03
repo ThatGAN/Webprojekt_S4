@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Toolbar, Avatar, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 
 import * as actionType from "./constants/actionTypes";
 import useStyles from "./styles";
+import "./App.css";
 
 const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -17,7 +18,7 @@ const Header = () => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
 
-    navigate.push("/auth");
+    navigate("/");
 
     setUser(null);
   };
@@ -54,41 +55,30 @@ const Header = () => {
             <a href="/tagebuch">Tagebuch</a>
           </li>
         </ul>
-        <li className="signIn right">
-          <Toolbar className={classes.toolbar}>
-            {user?.result ? (
-              <div className={classes.profile}>
-                {/* <Avatar
-                  className={classes.purple}
-                  alt={user?.result.name}
-                  src={user?.result.imageUrl}
-                >
-                  {user?.result.name.charAt(0)}
-                </Avatar> */}
-                {/* <Typography className={classes.userName} variant="h6">
-                  {user?.result.name}
-                </Typography> */}
-                <Button
-                  variant="contained"
-                  className={classes.logout}
-                  color="secondary"
-                  onClick={logout}
-                >
-                  Logout
-                </Button>
-              </div>
-            ) : (
+        <div className="signIn right">
+          {user?.result ? (
+            <div className={classes.profile}>
               <Button
-                component={Link}
-                to="/auth"
                 variant="contained"
-                color="primary"
+                className={classes.logout}
+                color="secondary"
+                onClick={logout}
               >
-                Sign In
+                Logout
               </Button>
-            )}
-          </Toolbar>
-        </li>
+            </div>
+          ) : (
+            <Button
+              className={classes.logout}
+              component={Link}
+              to="/auth"
+              variant="contained"
+              color="primary"
+            >
+              Sign In
+            </Button>
+          )}
+        </div>
       </div>
     </nav>
   );

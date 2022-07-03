@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
+// import Icon from "./icon";
 import { signin, signup } from "../../actions/auth";
 import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
@@ -29,7 +30,7 @@ const SignUp = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
-  const NauseNavigate = useNavigate();
+  const navigate = useNavigate();
   const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -41,13 +42,17 @@ const SignUp = () => {
     setShowPassword(false);
   };
 
+  const back = () => {
+    navigate("/");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signup(form, NauseNavigate));
+      dispatch(signup(form, navigate));
     } else {
-      dispatch(signin(form, NauseNavigate));
+      dispatch(signin(form, navigate));
     }
   };
 
@@ -58,7 +63,7 @@ const SignUp = () => {
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      // NauseNavigate.push("/");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -129,7 +134,7 @@ const SignUp = () => {
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
-          <GoogleLogin
+          {/* <GoogleLogin
             clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
@@ -147,7 +152,8 @@ const SignUp = () => {
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"
-          />
+          /> */}
+
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
@@ -155,7 +161,8 @@ const SignUp = () => {
                   ? "Already have an account? Sign in"
                   : "Don't have an account? Sign Up"}
               </Button>
-            </Grid>
+            </Grid>{" "}
+            <Button onClick={back}>Zurück</Button>
           </Grid>
         </form>
       </Paper>

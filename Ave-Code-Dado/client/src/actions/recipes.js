@@ -1,5 +1,9 @@
 import {
+  START_LOADING,
+  END_LOADING,
   FETCH_ALL,
+  FETCH_RECIPE,
+  FETCH_BY_SEARCH,
   CREATE,
   UPDATE,
   DELETE,
@@ -8,23 +12,59 @@ import {
 
 import * as api from "../api/index.js";
 
-export const getRecipes = () => async (dispatch) => {
+export const getRecipe = (id) => async (dispatch) => {
   try {
-    const { data } = await api.fetchRecipes();
+    dispatch({ type: START_LOADING });
 
-    dispatch({ type: FETCH_ALL, payload: data });
+    const { data } = await api.fetchRecipe(id);
+
+    dispatch({ type: FETCH_RECIPE, payload: { recipe: data } });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-export const createRecipe = (recipe) => async (dispatch) => {
+export const getRecipes = (page) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+    const {
+      data: { data, currentPage, numberOfPages },
+    } = await api.fetchRecipes(page);
+
+    dispatch({
+      type: FETCH_ALL,
+      payload: { data, currentPage, numberOfPages },
+    });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRecipesBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const {
+      data: { data },
+    } = await api.fetchRecipesBySearch(searchQuery);
+
+    dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createRecipe = (recipe, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.createRecipe(recipe);
 
     dispatch({ type: CREATE, payload: data });
+
+    // navigate(`/rezepte/${data._id}`);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -40,6 +80,7 @@ export const updateRecipe = (id, recipe) => async (dispatch) => {
 
 export const likeRecipe = (id) => async (dispatch) => {
   try {
+    console.log("data: ", id);
     const { data } = await api.likeRecipe(id);
 
     dispatch({ type: LIKE, payload: data });
