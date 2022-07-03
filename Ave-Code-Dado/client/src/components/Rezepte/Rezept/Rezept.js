@@ -128,7 +128,7 @@ const Rezept = ({ recipe, setCurrentId }) => {
             color="secondary"
             onClick={() => dispatch(deleteRecipe(recipe._id))}
           >
-            <DeleteIcon fontSize="small" /> Delete
+            <DeleteIcon fontSize="small" /> Löschen
           </Button>
         )}
       </CardActions>

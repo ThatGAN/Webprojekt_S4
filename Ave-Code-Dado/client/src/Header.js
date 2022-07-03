@@ -43,16 +43,10 @@ const Header = () => {
         </a>
         <ul id="nav-mobile" className="left hide-on-med-and-down">
           <li>
-            <a href="/profil">Profil</a>
-          </li>
-          <li>
             <a href="/fortschritt">Fortschritt</a>
           </li>
           <li>
             <a href="/Rezepte">Rezepte</a>
-          </li>
-          <li>
-            <a href="/tagebuch">Tagebuch</a>
           </li>
         </ul>
         <div className="signIn right">

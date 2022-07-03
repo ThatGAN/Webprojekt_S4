@@ -65,6 +65,7 @@ const SignUp = () => {
       dispatch({ type: AUTH, data: { result, token } });
 
       navigate("/");
+      location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -90,8 +91,8 @@ const SignUp = () => {
             {isSignup && (
               <>
                 <Input
-                  // InputProps={{ min: 0, style: { paddingLeft: "15px" } }}
                   name="firstName"
+                  styleProps={{ min: 0, style: { paddingLeft: "15px" } }}
                   label="First Name"
                   handleChange={handleChange}
                   autoFocus

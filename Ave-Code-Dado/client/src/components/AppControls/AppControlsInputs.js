@@ -1,4 +1,5 @@
 import React from "react";
+import "./AppControls.css";
 
 const AppControlsInputs = ({
   addMealsHandler,
@@ -40,12 +41,13 @@ const AppControlsInputs = ({
         </div>
 
         <div class="col s1">
-          <a class="btn-floating btn-large waves-effect waves-light green right" onClick={onAddMealsClick}>
-            <i class="material-icons " >add</i>
+          <a
+            class="btn-floating btn-large waves-effect waves-light green right"
+            onClick={onAddMealsClick}
+          >
+            <i class="material-icons ">add</i>
           </a>
         </div>
-
-        
       </div>
     </div>
   );

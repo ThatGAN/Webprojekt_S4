@@ -27,10 +27,7 @@ export default makeStyles((theme) => ({
   googleButton: {
     marginBottom: theme.spacing(2),
   },
-  Input: {
-    marginLeft: 4,
-  },
-  backButton: {
-    marginRight: 4,
+  input: {
+    paddingLeft: "4",
   },
 }));

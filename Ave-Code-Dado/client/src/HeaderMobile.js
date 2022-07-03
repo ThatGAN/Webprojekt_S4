@@ -52,44 +52,6 @@ function HeaderMobile() {
               <i className="material-icons">menu</i>
             </a>
 
-            <ul className="right hide-on-med-and-down">
-              <li>
-                <div className="user-view">
-                  <div className="background blue"></div>
-                  <a href="#user">
-                    {/* <img className="circle" src="images/yuna.jpg" /> */}
-                  </a>
-                  <a href="#name">
-                    {/* <Typography>{user.name}</Typography> */}
-                  </a>
-                  <a href="#email">
-                    <span className="white-text email">
-                      Schön dich zu sehen!
-                    </span>
-                  </a>
-                </div>
-              </li>
-              <li>
-                {" "}
-                <a href="/profil">Profil </a>
-              </li>
-              <li>
-                {" "}
-                <a href="/fortschritt">Fortschritt </a>
-              </li>
-              <li>
-                {" "}
-                <a href="/rezepte">Rezepte </a>
-              </li>
-              <li>
-                {" "}
-                <a href="/tagebuch">Tagebuch </a>
-              </li>
-              <li>
-                {" "}
-                <a href="#">Login/Logout </a>
-              </li>
-            </ul>
             <div className="signIn right">
               {user?.result ? (
                 <div className={classes.profile}>
@@ -126,13 +88,9 @@ function HeaderMobile() {
             </a>
             <a href="#name">{/* <Typography>{user.name}</Typography> */}</a>
             <a href="#email">
-              <span className="white-text email">Schön dich zu sehen!</span>
+              <span className="white-text email">Schön, dich zu sehen!</span>
             </a>
           </div>
-        </li>
-        <li>
-          {" "}
-          <a href="/profil">Profil </a>
         </li>
         <li>
           {" "}
@@ -141,10 +99,6 @@ function HeaderMobile() {
         <li>
           {" "}
           <a href="/rezepte">Rezepte </a>
-        </li>
-        <li>
-          {" "}
-          <a href="/tagebuch">Tagebuch </a>
         </li>
       </ul>
     </div>

@@ -177,7 +177,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="submit"
           fullWidth
         >
-          Submit
+          Abschicken
         </Button>
         <Button
           variant="contained"
@@ -186,7 +186,7 @@ const Form = ({ currentId, setCurrentId }) => {
           onClick={clear}
           fullWidth
         >
-          Clear
+          Leeren
         </Button>
       </form>
     </Paper>

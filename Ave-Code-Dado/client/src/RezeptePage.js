@@ -113,7 +113,7 @@ const RezeptePage = () => {
                     variant="contained"
                     color="primary"
                   >
-                    Search
+                    Suchen
                   </Button>
                 </AppBar>
                 <Form currentId={currentId} setCurrentId={setCurrentId} />
